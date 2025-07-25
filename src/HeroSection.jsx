@@ -1,5 +1,5 @@
 import React from "react";
-import Navbar from "./Navbar";
+import Navbar from "./NavBar";
 import { motion } from "framer-motion";
 
 function HeroSection() {
