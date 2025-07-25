@@ -1,0 +1,657 @@
+@import "tailwindcss";
+
+/* Our Specialization CSS */
+
+/* Section and container styles */
+.our-specializations-section {
+  background: #000;
+  color: #fff;
+  padding: 4rem 0;
+}
+
+.our-specializations-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.our-specializations-title {
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 3rem;
+  letter-spacing: -0.01em;
+}
+
+/* Grid layout */
+.specializations-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+@media (min-width: 640px) {
+  .specializations-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (min-width: 1024px) {
+  .specializations-grid {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+/* Card styling */
+.specialization-card {
+  background: #23272f;
+  padding: 1.5rem;
+  border-radius: 1.25rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; /* vertical centering */
+  text-align: center;
+  height: 400px;
+
+  /* initial state: invisible and translated down */
+  opacity: 0;
+  transform: translateY(20px);
+
+  /* animation properties */
+  animation-fill-mode: forwards;
+  animation-timing-function: ease;
+  animation-duration: 0.6s;
+  transition: none;
+}
+
+/* When card is visible, trigger fadeSlideUp animation */
+.specialization-card.visible {
+  animation-name: fadeSlideUp;
+}
+
+/* Hover effect */
+.specialization-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.3);
+}
+
+/* Icon background circle */
+.specialization-icon-bg {
+  width: 4rem;
+  height: 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  margin-bottom: 1rem;
+}
+
+/* Icon svg */
+.specialization-icon {
+  width: 2rem;
+  height: 2rem;
+  color: #fff;
+}
+
+/* Background color classes for icon backgrounds */
+.bg-violet {
+  background: #7c3aed;
+}
+.bg-emerald {
+  background: #059669;
+}
+.bg-pink {
+  background: #e11d48;
+}
+.bg-orange {
+  background: #ff7d1a;
+}
+.bg-cyan {
+  background: #06b6d4;
+}
+
+/* Title */
+.specialization-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+/* Description text */
+.specialization-desc {
+  font-size: 0.95rem;
+  color: #d1d5db;
+  display: inline-block; /* needed for animating inline words */
+  line-height: 1.4;
+}
+
+/* Animation keyframes for cards */
+@keyframes fadeSlideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Animation for individual words */
+.word {
+  opacity: 0;
+  display: inline-block; /* needed for animation */
+  animation-name: none; /* disable animation by default */
+}
+
+/* Word fade-in when visible */
+.word.visible {
+  animation-name: wordFadeIn;
+  animation-duration: 0.3s;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease;
+}
+
+/* Word fade-in keyframe */
+@keyframes wordFadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+/* Tech Stack CSS */
+
+
+/* Container & Background */
+.Techstack-container {
+  /* background: radial-gradient(circle at 50% 30%, #101929 70%, #000 100%); */
+  background-color: #000;
+  padding: 2rem 0;
+  min-height: 600px;
+  width: 100vw;
+  box-sizing: border-box;
+  overflow-x: hidden;
+  /* Parallax Drift Animation */
+  animation: drift 32s linear infinite alternate;
+}
+
+
+@keyframes drift {
+  0%   { background-position: 50% 30%; }
+  100% { background-position: 45% 33%; }
+}
+
+
+/* Centered content wrapper */
+.orbit-center {
+  max-width: 950px;
+  margin: 0 auto;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+/* Heading */
+.TechStack-heading {
+  color: #06b6d4;
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  letter-spacing: 2px;
+  z-index: 2;
+}
+
+
+/* Orbit Wrapper: Animated Depth Effect */
+.orbit-wrapper {
+  position: relative;
+  width: 525px;
+  height: 525px;
+  margin: 0 auto;
+  pointer-events: none;
+  animation: orbit-depth 13s cubic-bezier(.63,.09,.62,1.05) infinite alternate;
+  transform-origin: 50% 50%;
+}
+
+
+/* Depth/3D cardinals animation */
+@keyframes orbit-depth {
+  0%   { transform: perspective(600px) rotateZ(0deg) scale(1);}
+  25%  { transform: perspective(600px) rotateZ(8deg) scale(1.05);}
+  50%  { transform: perspective(600px) rotateZ(-6deg) scale(0.97);}
+  100% { transform: perspective(600px) rotateZ(0deg) scale(1);}
+}
+
+
+/* Individual orbiting language labels */
+.orbit-lang {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform-origin: center center;
+  transform: translate(-50%, -50%) scale(0.5);
+  opacity: 0;
+  background: linear-gradient(135deg, #0ea5e9, #06b6d4);
+  color: #fff;
+  padding: 0.7rem 1.6rem;
+  border-radius: 2.3rem;
+  font-weight: 600;
+  box-shadow: 0 3px 14px 0 rgba(14, 165, 233, 0.25);
+  font-size: 1.65rem;
+  transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
+  pointer-events: auto;
+  z-index: 1;
+  /* Floating & fade-in remain, ripple effect is subtle */
+  animation: orbit-fade-in 1.05s forwards, floating 6s ease-in-out infinite alternate;
+  animation-delay: calc(var(--i) * 0.2s + 0.25s), 0s;
+}
+
+
+/* Position languages evenly around a circle (desktop, 11 items) */
+.lang-0  { transform: rotate(0deg)    translate(225px) rotate(0deg) scale(0.5);}
+.lang-1  { transform: rotate(33deg)   translate(225px) rotate(-33deg) scale(0.5);}
+.lang-2  { transform: rotate(66deg)   translate(225px) rotate(-66deg) scale(0.5);}
+.lang-3  { transform: rotate(99deg)   translate(225px) rotate(-99deg) scale(0.5);}
+.lang-4  { transform: rotate(132deg)  translate(225px) rotate(-132deg) scale(0.5);}
+.lang-5  { transform: rotate(165deg)  translate(225px) rotate(-165deg) scale(0.5);}
+.lang-6  { transform: rotate(198deg)  translate(225px) rotate(-198deg) scale(0.5);}
+.lang-7  { transform: rotate(231deg)  translate(225px) rotate(-231deg) scale(0.5);}
+.lang-8  { transform: rotate(264deg)  translate(225px) rotate(-264deg) scale(0.5);}
+.lang-9  { transform: rotate(297deg)  translate(225px) rotate(-297deg) scale(0.5);}
+.lang-10 { transform: rotate(330deg)  translate(225px) rotate(-330deg) scale(0.5);}
+
+
+/* Fade-in & scale up animation for orbit items */
+@keyframes orbit-fade-in {
+  0%   { opacity: 0; transform: translate(-50%, -50%) scale(0.2);}
+  60%  { opacity: 1; }
+  100% { opacity: 1; }
+}
+
+
+/* Floating glow effect animation */
+@keyframes floating {
+  0%   { filter: brightness(100%) drop-shadow(0 0 0 #06b6d4);}
+  70%  { filter: brightness(108%) drop-shadow(0 0 6px #06b6d4);}
+  100% { filter: brightness(100%) drop-shadow(0 0 0 #06b6d4);}
+}
+
+
+/* Hover effect brings forward and adds glow */
+.orbit-lang:hover {
+  background: linear-gradient(135deg, #0ea5e9, #89f5e9);
+  color: #101929;
+  z-index: 5;
+  transform: scale(1.12) !important;
+  box-shadow: 0 6px 24px 0 rgba(6, 182, 212, 0.33);
+  cursor: pointer;
+}
+
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 600px) {
+  .orbit-wrapper {
+    width: 320px;
+    height: 320px;
+  }
+  .orbit-lang {
+    font-size: 0.9rem;
+    padding: 0.5rem 1rem;
+  }
+  /* Adjust orbit radius for mobile */
+  .lang-0  { transform: rotate(0deg) translate(135px) rotate(0deg) scale(0.5); }
+  .lang-1  { transform: rotate(33deg) translate(135px) rotate(-33deg) scale(0.5);}
+  .lang-2  { transform: rotate(66deg) translate(135px) rotate(-66deg) scale(0.5);}
+  .lang-3  { transform: rotate(99deg) translate(135px) rotate(-99deg) scale(0.5);}
+  .lang-4  { transform: rotate(132deg) translate(135px) rotate(-132deg) scale(0.5);}
+  .lang-5  { transform: rotate(165deg) translate(135px) rotate(-165deg) scale(0.5);}
+  .lang-6  { transform: rotate(198deg) translate(135px) rotate(-198deg) scale(0.5);}
+  .lang-7  { transform: rotate(231deg) translate(135px) rotate(-231deg) scale(0.5);}
+  .lang-8  { transform: rotate(264deg) translate(135px) rotate(-264deg) scale(0.5);}
+  .lang-9  { transform: rotate(297deg) translate(135px) rotate(-297deg) scale(0.5);}
+  .lang-10 { transform: rotate(330deg) translate(135px) rotate(-330deg) scale(0.5);}
+} 
+
+
+/* Footer CSS */
+
+
+/* Footer.css */
+
+/* Root container */
+.footer-container {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  background-color: black;
+}
+
+/* Gradient overlay */
+.footer-gradient {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image:
+    linear-gradient(to right, #4f4f4f2e 1px, transparent 1px),
+    linear-gradient(to bottom, #4f4f4f2e 1px, transparent 1px);
+  background-size: 14px 24px;
+  -webkit-mask-image: radial-gradient(ellipse 60% 50% at 50% 0%, #000 70%, transparent 100%);
+  mask-image: radial-gradient(ellipse 60% 50% at 50% 0%, #000 70%, transparent 100%);
+}
+
+/* Wrapper for content */
+.footer-content {
+  position: relative;
+  color: white;
+  text-align: center;
+  padding: 6rem 1rem; /* py-24 px-4 */
+  overflow: hidden;
+}
+
+/* Watermark background text */
+.footer-watermark {
+  position: absolute;
+  top: 66.6667%; /* 2/3 */
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-weight: 800; /* font-extrabold */
+  color: #6c63ff18;
+  white-space: nowrap;
+  letter-spacing: 0.05em; /* tracking-wider */
+  user-select: none;
+  pointer-events: none;
+  text-transform: uppercase;
+  z-index: 0;
+
+  /* Responsive font sizes */
+  font-size: 12vw;
+}
+
+@media (min-width: 640px) { /* sm */
+  .footer-watermark {
+    font-size: 10vw;
+  }
+}
+
+@media (min-width: 768px) { /* md */
+  .footer-watermark {
+    font-size: 8vw;
+  }
+}
+
+@media (min-width: 1024px) { /* lg */
+  .footer-watermark {
+    font-size: 5vw;
+  }
+}
+
+/* Foreground Content */
+.footer-main {
+  position: relative;
+  z-index: 10;
+  max-width: 64rem; /* max-w-4xl */
+  margin-left: auto;
+  margin-right: auto;
+  font-family: 'Poppins', sans-serif; /* font-poppins */
+}
+
+/* Headings */
+.footer-title {
+  font-weight: 700;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+  color: white;
+
+  font-size: 1.875rem; /* text-3xl */
+}
+
+@media (min-width: 640px) {
+  .footer-title {
+    font-size: 2.25rem; /* sm:text-4xl */
+  }
+}
+
+@media (min-width: 768px) {
+  .footer-title {
+    font-size: 3rem; /* md:text-5xl */
+  }
+}
+
+.footer-title span {
+  color: #6c63ff;
+}
+
+/* Subtitle */
+.footer-subtitle {
+  font-weight: 500;
+  font-size: 1.125rem; /* text-lg */
+  margin-bottom: 2rem;
+  color: #23d7b0;
+  letter-spacing: 0.05em; /* tracking-wide */
+}
+
+@media (min-width: 640px) {
+  .footer-subtitle {
+    font-size: 1.25rem; /* sm:text-xl */
+  }
+}
+
+/* Contact Us button */
+.footer-contact-btn {
+  display: inline-block;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  font-size: 0.875rem; /* text-sm */
+  color: white;
+  background-color: #6c63ff;
+  font-weight: 600;
+  border-radius: 9999px;
+  box-shadow: 0 4px 6px rgba(108, 99, 255, 0.5);
+
+  margin-bottom: 2.5rem;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+@media (min-width: 640px) {
+  .footer-contact-btn {
+    font-size: 1rem; /* sm:text-base */
+  }
+}
+
+.footer-contact-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 12px #6c63ff;
+}
+/* Stylish container with subtle shadow and gradient */
+.contact-details {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  background: linear-gradient(90deg, #1e3c72 0%, #2a5298 100%);
+  border-radius: 1rem;
+  padding: 1.5rem 2rem;
+  box-shadow: 0 8px 24px rgba(108,99,255,0.09), 0 1.5px 8px #222;
+  margin-top: 2.5rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Individual contact element styling */
+/* Container for contact details with transparent background to show watermark */
+.contact-details {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+
+  /* Very transparent blue background to keep watermark visible */
+  background: linear-gradient(
+    90deg,
+    rgba(51, 153, 255, 0.08) 0%,
+    rgba(51, 153, 255, 0.08) 100%
+  );
+
+  border-radius: 1rem;
+  padding: 1.5rem 2rem;
+
+  /* Soft shadows so background is subtle */
+  box-shadow: 0 8px 24px rgba(108, 99, 255, 0.05), 0 1.5px 8px #2222;
+
+  margin-top: 2.5rem;
+  margin-bottom: 1.5rem;
+
+  /* Subtle blur behind contact box for better watermark visibility */
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+/* Individual contact element styling */
+.contact-details h3 {
+  margin: 0;
+  padding: 0.5rem 1.25rem;
+  color: #ffffff;
+  background: rgba(51, 153, 255, 0.20);
+  border-radius: 999px;
+  font-size: 1.04rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+}
+
+/* Links inside contact details */
+.contact-details h3 a {
+  color: #a2fffc;
+  text-decoration: underline dotted;
+  transition: color 0.2s;
+}
+
+/* Hover and focus styles for better interactivity */
+.contact-details h3:hover,
+.contact-details h3:focus-within {
+  background: #3399ff;
+  color: #1e3c72;
+  box-shadow: 0 4px 18px #3399ff33;
+}
+
+.contact-details h3 a:hover,
+.contact-details h3 a:focus {
+  color: #ffcd46;
+  text-decoration: underline;
+}
+
+/* Footer Bottom */
+.footer-bottom {
+  margin-top: 2rem;
+  font-size: 0.875rem;
+  color: #888;
+}
+
+
+
+/* Our Price CSS */
+
+body {
+  background: #000;
+  margin: 0;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.price-heading {
+  text-align: center;
+  color: #06b6d4;
+  letter-spacing: 2px;
+  font-weight: 800;
+}
+
+.price-appearance {
+  display: flex;
+  flex-direction: row;
+  gap: 32px;
+  align-items: center;
+  width: max-content;
+  margin-top: 20px;
+  animation: scrollLeft 20s linear infinite;
+  animation-play-state: running;
+}
+
+/* Pause marquee when any card is hovered (modern browsers) */
+.price-appearance:has(.price-card:hover) {
+  animation-play-state: paused;
+}
+
+/* Fallback: Pause animation when container is hovered (for older browsers) */
+.price-appearance:hover {
+  animation-play-state: paused;
+}
+
+/* Keyframes for continuous leftward movement */
+@keyframes scrollLeft {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-2760px); }
+  /* 2760px = 5 cards x (500px width + 16px*2 margin) + 4 gaps x 32px
+     Adjust this if your card size or gap changes!
+   */
+}
+
+/* Card styles */
+.price-card {
+  width: 500px;
+  height: 500px;
+  color: #fff;
+  font-size: 2.2rem;
+  font-family: 'Poppins', sans-serif;
+  border-radius: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 12px 32px rgba(20,20,30,0.27);
+  margin: 0 8px;
+  background: #1e1e2f;
+  opacity: 1;
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+
+/* Gradient backgrounds for each card */
+.price1 { background: linear-gradient(135deg, #181926 60%, #6c63ff 100%);}
+.price2 { background: linear-gradient(135deg, #222 55%, #fa709a 100%);}
+.price3 { background: linear-gradient(135deg, #181926 70%, #feb47b 100%); color: #24243e;}
+.price4 { background: linear-gradient(135deg, #23243e 60%, #23d7b0 100%);}
+.price5 { background: linear-gradient(135deg, #28293e 65%, #fd5fff 100%);}
+
+/* Stylish hover effect */
+.price-card:hover {
+  box-shadow: 0 24px 48px 0 #0008;
+  transform: scale(1.028) translateY(-10px) rotate(2deg);
+  z-index: 2;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1400px) {
+  .price-card { width: 350px; height: 350px; font-size: 1.4rem; }
+  .price-appearance { gap: 16px; }
+}
+@media (max-width: 900px) {
+  .price-card { width: 220px; height: 220px; font-size: 1rem; }
+  .price-appearance { gap: 8px; }
+}
+@media (max-width: 550px) {
+  .price-card { width: 130px; height: 130px; font-size: 0.65rem; }
+}
+
+/* Optional: Hide scrollbars if visible */
+.price-appearance::-webkit-scrollbar { display: none; }
+
+
