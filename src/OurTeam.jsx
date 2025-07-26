@@ -26,10 +26,7 @@ const TeamMemberCard = ({ imgSrc, alt, name, role, description }) => {
   }, []);
 
   return (
-    <div
-      ref={ref}
-      className={`team-member-card ${visible ? "visible" : ""}`}
-    >
+    <div ref={ref} className={`team-member-card ${visible ? "visible" : ""}`}>
       <img className="team-member-img" src={imgSrc} alt={alt} />
       <h2 className="team-member-name">{name}</h2>
       <h3 className="team-member-role">{role}</h3>
@@ -100,6 +97,7 @@ const teamMembers = [
 const OurTeam = () => {
   return (
     <>
+      <h1 className="team-title">Our Team</h1>
       <div className="team-details-div">
         {teamMembers.map((member, idx) => (
           <TeamMemberCard

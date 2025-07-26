@@ -164,158 +164,124 @@
 /* Tech Stack CSS */
 
 
-/* Container & Background */
+
 .Techstack-container {
-  /* background: radial-gradient(circle at 50% 30%, #101929 70%, #000 100%); */
   background-color: #000;
-  padding: 2rem 0;
-  min-height: 600px;
-  width: 100vw;
+  padding: 3rem 1rem;
   box-sizing: border-box;
-  overflow-x: hidden;
-  /* Parallax Drift Animation */
-  animation: drift 32s linear infinite alternate;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
 }
 
-
-@keyframes drift {
-  0%   { background-position: 50% 30%; }
-  100% { background-position: 45% 33%; }
+.Techstack-container.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
-
-/* Centered content wrapper */
-.orbit-center {
-  max-width: 950px;
-  margin: 0 auto;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-
-/* Heading */
 .TechStack-heading {
   color: #06b6d4;
-  text-align: center;
   font-size: 2.5rem;
   margin-bottom: 2rem;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   letter-spacing: 2px;
-  z-index: 2;
 }
 
-
-/* Orbit Wrapper: Animated Depth Effect */
-.orbit-wrapper {
-  position: relative;
-  width: 525px;
-  height: 525px;
-  margin: 0 auto;
-  pointer-events: none;
-  animation: orbit-depth 13s cubic-bezier(.63,.09,.62,1.05) infinite alternate;
-  transform-origin: 50% 50%;
+.tech-scroll-container {
+  display: flex;
+  flex-wrap: wrap; /* ALLOW WRAPPING */
+  justify-content: center;
+  gap: 1.5rem;
+  padding: 1rem;
 }
 
-
-/* Depth/3D cardinals animation */
-@keyframes orbit-depth {
-  0%   { transform: perspective(600px) rotateZ(0deg) scale(1);}
-  25%  { transform: perspective(600px) rotateZ(8deg) scale(1.05);}
-  50%  { transform: perspective(600px) rotateZ(-6deg) scale(0.97);}
-  100% { transform: perspective(600px) rotateZ(0deg) scale(1);}
-}
-
-
-/* Individual orbiting language labels */
-.orbit-lang {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform-origin: center center;
-  transform: translate(-50%, -50%) scale(0.5);
+/* Individual card */
+.tech-card {
+  flex: 0 1 calc(16.6% - 1.5rem); /* 6 cards per row on large screens */
+  background: #111827;
+  color: white;
+  padding: 1rem 1.5rem;
+  border-radius: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: slideInUp 0.8s ease forwards;
+  animation-delay: calc(var(--i) * 0.1s);
   opacity: 0;
-  background: linear-gradient(135deg, #0ea5e9, #06b6d4);
-  color: #fff;
-  padding: 0.7rem 1.6rem;
-  border-radius: 2.3rem;
-  font-weight: 600;
-  box-shadow: 0 3px 14px 0 rgba(14, 165, 233, 0.25);
-  font-size: 1.65rem;
-  transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
-  pointer-events: auto;
-  z-index: 1;
-  /* Floating & fade-in remain, ripple effect is subtle */
-  animation: orbit-fade-in 1.05s forwards, floating 6s ease-in-out infinite alternate;
-  animation-delay: calc(var(--i) * 0.2s + 0.25s), 0s;
+  transform: translateY(20px);
+  transition: transform 0.3s ease;
 }
 
-
-/* Position languages evenly around a circle (desktop, 11 items) */
-.lang-0  { transform: rotate(0deg)    translate(225px) rotate(0deg) scale(0.5);}
-.lang-1  { transform: rotate(33deg)   translate(225px) rotate(-33deg) scale(0.5);}
-.lang-2  { transform: rotate(66deg)   translate(225px) rotate(-66deg) scale(0.5);}
-.lang-3  { transform: rotate(99deg)   translate(225px) rotate(-99deg) scale(0.5);}
-.lang-4  { transform: rotate(132deg)  translate(225px) rotate(-132deg) scale(0.5);}
-.lang-5  { transform: rotate(165deg)  translate(225px) rotate(-165deg) scale(0.5);}
-.lang-6  { transform: rotate(198deg)  translate(225px) rotate(-198deg) scale(0.5);}
-.lang-7  { transform: rotate(231deg)  translate(225px) rotate(-231deg) scale(0.5);}
-.lang-8  { transform: rotate(264deg)  translate(225px) rotate(-264deg) scale(0.5);}
-.lang-9  { transform: rotate(297deg)  translate(225px) rotate(-297deg) scale(0.5);}
-.lang-10 { transform: rotate(330deg)  translate(225px) rotate(-330deg) scale(0.5);}
-
-
-/* Fade-in & scale up animation for orbit items */
-@keyframes orbit-fade-in {
-  0%   { opacity: 0; transform: translate(-50%, -50%) scale(0.2);}
-  60%  { opacity: 1; }
-  100% { opacity: 1; }
+.tech-card:hover {
+  transform: scale(1.1);
+  background: #0f172a;
 }
 
-
-/* Floating glow effect animation */
-@keyframes floating {
-  0%   { filter: brightness(100%) drop-shadow(0 0 0 #06b6d4);}
-  70%  { filter: brightness(108%) drop-shadow(0 0 6px #06b6d4);}
-  100% { filter: brightness(100%) drop-shadow(0 0 0 #06b6d4);}
+.tech-icon {
+  width: 50px;
+  height: 50px;
+  margin-bottom: 0.7rem;
 }
 
-
-/* Hover effect brings forward and adds glow */
-.orbit-lang:hover {
-  background: linear-gradient(135deg, #0ea5e9, #89f5e9);
-  color: #101929;
-  z-index: 5;
-  transform: scale(1.12) !important;
-  box-shadow: 0 6px 24px 0 rgba(6, 182, 212, 0.33);
-  cursor: pointer;
-}
-
-
-/* Responsive adjustments for smaller screens */
-@media (max-width: 600px) {
-  .orbit-wrapper {
-    width: 320px;
-    height: 320px;
+/* Animation */
+@keyframes slideInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
-  .orbit-lang {
-    font-size: 0.9rem;
-    padding: 0.5rem 1rem;
+}
+
+/* ----------- RESPONSIVE MEDIA QUERIES ----------- */
+
+/* Medium Devices */
+@media (max-width: 1024px) {
+  .tech-card {
+    flex: 0 1 calc(25% - 1.5rem); /* 4 cards per row */
   }
-  /* Adjust orbit radius for mobile */
-  .lang-0  { transform: rotate(0deg) translate(135px) rotate(0deg) scale(0.5); }
-  .lang-1  { transform: rotate(33deg) translate(135px) rotate(-33deg) scale(0.5);}
-  .lang-2  { transform: rotate(66deg) translate(135px) rotate(-66deg) scale(0.5);}
-  .lang-3  { transform: rotate(99deg) translate(135px) rotate(-99deg) scale(0.5);}
-  .lang-4  { transform: rotate(132deg) translate(135px) rotate(-132deg) scale(0.5);}
-  .lang-5  { transform: rotate(165deg) translate(135px) rotate(-165deg) scale(0.5);}
-  .lang-6  { transform: rotate(198deg) translate(135px) rotate(-198deg) scale(0.5);}
-  .lang-7  { transform: rotate(231deg) translate(135px) rotate(-231deg) scale(0.5);}
-  .lang-8  { transform: rotate(264deg) translate(135px) rotate(-264deg) scale(0.5);}
-  .lang-9  { transform: rotate(297deg) translate(135px) rotate(-297deg) scale(0.5);}
-  .lang-10 { transform: rotate(330deg) translate(135px) rotate(-330deg) scale(0.5);}
-} 
+
+  .tech-icon {
+    width: 45px;
+    height: 45px;
+  }
+
+  .TechStack-heading {
+    font-size: 2rem;
+  }
+}
+
+/* Tablets */
+@media (max-width: 768px) {
+  .tech-card {
+    flex: 0 1 calc(33.33% - 1.5rem); /* 3 cards per row */
+  }
+
+  .tech-icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .TechStack-heading {
+    font-size: 1.8rem;
+  }
+}
+
+/* Phones */
+@media (max-width: 480px) {
+  .tech-card {
+    flex: 0 1 calc(50% - 1rem); /* 2 cards per row */
+    padding: 0.8rem 1rem;
+  }
+
+  .tech-icon {
+    width: 34px;
+    height: 34px;
+  }
+
+  .TechStack-heading {
+    font-size: 1.5rem;
+  }
+}
 
 
 /* Footer CSS */
@@ -560,6 +526,16 @@
 
 /* Our Team CSS */
 
+.team-title {
+  text-align: center;
+  color: #06b6d4;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 2.5rem;
+  margin: 2rem 0 1.5rem 0;
+  letter-spacing: 0.05em;
+}
+
 /* Main team details container */
 .team-details-div {
   background: #000;
@@ -572,7 +548,7 @@
   overflow-x: hidden;
 }
 
-/* All cards the same fixed size */
+/* All cards the same fixed size, content vertically centered */
 .team-member-card {
   background: #181818;
   border-radius: 18px;
@@ -581,7 +557,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: center; /* Vertically center content */
   width: 300px;
   height: 340px;
   margin: 0 auto;
@@ -679,117 +655,109 @@
 }
 
 
-
 /* Our Price CSS */
+
 
 body {
   background: #000;
   margin: 0;
   min-height: 100vh;
   overflow-x: hidden;
+  font-family: 'Poppins', sans-serif;
 }
 
+/* Heading styling */
 .price-heading {
   text-align: center;
   color: #06b6d4;
-  letter-spacing: 2px;
-  font-weight: 800;
-  margin: 20px 0;
-  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  margin: 2rem 0;
+  font-size: 2.5rem;
+  letter-spacing: 1px;
+}
+
+/* Ping-pong scroll animation for container */
+@keyframes pingPongScroll {
+  0% {
+    transform: translateX(0%);
+  }
+  50% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
 }
 
 .price-appearance {
   display: flex;
-  flex-direction: row;
-  gap: 32px;
-  align-items: center;
-  width: max-content;
-  margin: 20px auto 40px;
-  animation: scrollLeft 18s linear infinite;
-  animation-play-state: running;
+  gap: 20px;
+  width: fit-content;
+  padding: 1rem;
+  animation: pingPongScroll 20s ease-in-out infinite;
+  will-change: transform;
   user-select: none;
+  margin: 0 auto;
 }
 
-/* Pause marquee when any card is hovered */
-.price-appearance:has(.price-card:hover),
 .price-appearance:hover {
   animation-play-state: paused;
 }
 
-/* Keyframes for continuous leftward marquee */
-/* Update the pixel value if you add/remove cards (or change sizes) */
-@keyframes scrollLeft {
-  0%   { transform: translateX(0); }
-  100% { transform: translateX(-2760px); }
-}
-
-/* Price card styles */
+/* Price cards */
 .price-card {
-  width: 500px;
-  height: 500px;
+  min-width: 300px;
+  height: 300px;
+  background: #1f1f2f;
   color: #fff;
-  font-size: 2.2rem;
-  font-family: 'Poppins', sans-serif;
-  border-radius: 2rem;
+  font-size: 1.5rem;
+  border-radius: 1rem;
   display: flex;
   justify-content: center;
   align-items: center;
-  box-shadow: 0 12px 32px rgba(20,20,30,0.27);
-  margin: 0 8px;
-  background: #1e1e2f;
-  transition: box-shadow 0.2s, transform 0.2s;
   flex-shrink: 0;
-  opacity: 1;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+  text-align: center;
 }
 
-.price1 { background: linear-gradient(135deg, #181926 60%, #6c63ff 100%);}
-.price2 { background: linear-gradient(135deg, #222 55%, #fa709a 100%);}
-.price3 { background: linear-gradient(135deg, #181926 70%, #feb47b 100%); color: #24243e;}
-.price4 { background: linear-gradient(135deg, #23243e 60%, #23d7b0 100%);}
-.price5 { background: linear-gradient(135deg, #28293e 65%, #fd5fff 100%);}
-
+/* Hover effect */
 .price-card:hover {
-  box-shadow: 0 24px 48px 0 #0008;
-  transform: scale(1.03) translateY(-10px) rotate(1.4deg);
-  z-index: 2;
+  transform: scale(1.05);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.35);
 }
 
-/* Responsive – Large tablets/desktops */
-@media (max-width: 1400px) {
-  .price-card { width: 350px; height: 350px; font-size: 1.4rem; }
-  .price-appearance { gap: 24px; }
-  @keyframes scrollLeft {
-    0%   { transform: translateX(0); }
-    100% { transform: translateX(-1990px); }
-  }
+/* Card backgrounds */
+.price1 {
+  background: linear-gradient(135deg, #1a1a2e, #16213e);
+}
+.price2 {
+  background: linear-gradient(135deg, #2b2e4a, #e84545);
+}
+.price3 {
+  background: linear-gradient(135deg, #232526, #414345);
+}
+.price4 {
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+}
+.price5 {
+  background: linear-gradient(135deg, #2c3e50, #4ca1af);
 }
 
-/* Responsive – tablets/landscape phones */
+/* Responsive: Tablets */
 @media (max-width: 900px) {
-  .price-card { width: 220px; height: 220px; font-size: 1rem; }
-  .price-appearance { gap: 16px; }
-  @keyframes scrollLeft {
-    0%   { transform: translateX(0); }
-    100% { transform: translateX(-1300px); }
+  .price-card {
+    min-width: 200px;
+    height: 200px;
+    font-size: 1rem;
   }
 }
 
-/* Responsive – portrait phones */
-@media (max-width: 550px) {
-  .price-card { width: 130px; height: 130px; font-size: 0.72rem; }
-  .price-appearance { gap: 8px; }
-  @keyframes scrollLeft {
-    0%   { transform: translateX(0); }
-    100% { transform: translateX(-700px); }
+/* Responsive: Phones */
+@media (max-width: 600px) {
+  .price-card {
+    min-width: 140px;
+    height: 140px;
+    font-size: 0.85rem;
   }
 }
-
-/* Hide scrollbars for webkit browsers */
-.price-appearance::-webkit-scrollbar {
-  display: none;
-}
-.price-appearance {
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;     /* Firefox */
-}
-

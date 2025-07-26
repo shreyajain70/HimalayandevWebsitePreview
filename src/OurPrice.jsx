@@ -1,10 +1,10 @@
 import React from "react";
 
-const OurPrice = ()=>{
-  return(
+const OurPrice = () => {
+  return (
     <>
-       <div className="price-appearance">
-         {/* <h1 className="Price-heading">Our Limited Offer</h1> */}
+      <h1 className="price-heading">Our Team</h1>
+      <div className="price-appearance">
         <div className="price-card price1">1st Offer</div>
         <div className="price-card price2">2nd Offer</div>
         <div className="price-card price3">3rd Offer</div>
@@ -12,7 +12,7 @@ const OurPrice = ()=>{
         <div className="price-card price5">5th Offer</div>
       </div>
     </>
-  )
-}
+  );
+};
 
 export default OurPrice;

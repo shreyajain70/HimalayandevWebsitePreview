@@ -6,7 +6,7 @@ import { Footer } from './Footer';
 import HeroSection from './HeroSection';
 import OurProcess from './OurProcess';
 import { OurSpecializations } from './Ourspecialization';
-import { TechStack } from './TechStack';
+import TechStack from './TechStack';
 import OurTeam from './OurTeam';
 import OurPrice from './OurPrice';
 
