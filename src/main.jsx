@@ -8,7 +8,9 @@ import OurProcess from './OurProcess';
 import { OurSpecializations } from './Ourspecialization';
 import { TechStack } from './TechStack';
 import OurTeam from './OurTeam';
-import { OurPrice } from './OurPrice';
+import OurPrice from './OurPrice';
+
+
 function App() {
   return (
     <>
@@ -19,7 +21,9 @@ function App() {
       <OurSpecializations></OurSpecializations>
       <TechStack></TechStack>
       <OurPrice></OurPrice>
+      <OurTeam></OurTeam>
       <Footer />
+
 
 
     </>

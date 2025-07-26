@@ -321,8 +321,6 @@
 /* Footer CSS */
 
 
-/* Footer.css */
-
 /* Root container */
 .footer-container {
   position: relative;
@@ -560,6 +558,128 @@
 
 
 
+/* Our Team CSS */
+
+/* Main team details container */
+.team-details-div {
+  background: #000;
+  padding: 40px 20px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+  min-height: 100vh;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+/* All cards the same fixed size */
+.team-member-card {
+  background: #181818;
+  border-radius: 18px;
+  box-shadow: 0 4px 24px 0 rgba(0, 0, 0, 0.55);
+  padding: 28px 24px 24px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  width: 300px;
+  height: 340px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: transform 0.4s ease, opacity 0.4s ease;
+}
+
+.team-member-card.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.team-member-card:hover {
+  transform: translateY(-8px) scale(1.025);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.7);
+}
+
+/* Team member image styling */
+.team-member-img {
+  width: 88px;
+  height: 88px;
+  object-fit: cover;
+  border-radius: 50%;
+  background: #444;
+  border: 3px solid #292929;
+  margin-bottom: 18px;
+}
+
+/* Member name */
+.team-member-name {
+  color: #fff;
+  font-size: 1.3rem;
+  margin: 0 0 7px 0;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+/* Member role */
+.team-member-role {
+  color: #F5A623;
+  font-size: 1rem;
+  font-weight: 500;
+  margin: 0 0 13px 0;
+  letter-spacing: 0.01em;
+  text-align: center;
+}
+
+/* Member description - hidden by default, shown only on hover */
+.team-member-description {
+  color: #d4d4d4;
+  font-size: 0.92rem;
+  margin: 0;
+  font-weight: 400;
+  text-align: center;
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: opacity 0.3s ease, max-height 0.3s ease;
+  pointer-events: none;
+}
+
+.team-member-card:hover .team-member-description {
+  opacity: 1;
+  max-height: 100px;
+  pointer-events: auto;
+}
+
+/* Responsive adjustments */
+@media (max-width: 900px) {
+  .team-details-div {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .team-member-card {
+    width: 90vw;
+    max-width: 300px;
+    min-width: 180px;
+    height: 340px;
+  }
+}
+@media (max-width: 500px) {
+  .team-details-div {
+    grid-template-columns: 1fr;
+    padding: 24px 8px;
+  }
+  .team-member-card {
+    width: 98vw;
+    max-width: 360px;
+    min-width: 160px;
+    height: 350px;
+    padding: 18px 10px 18px 10px;
+  }
+}
+
+
+
 /* Our Price CSS */
 
 body {
@@ -574,6 +694,8 @@ body {
   color: #06b6d4;
   letter-spacing: 2px;
   font-weight: 800;
+  margin: 20px 0;
+  font-family: 'Poppins', sans-serif;
 }
 
 .price-appearance {
@@ -582,31 +704,26 @@ body {
   gap: 32px;
   align-items: center;
   width: max-content;
-  margin-top: 20px;
-  animation: scrollLeft 20s linear infinite;
+  margin: 20px auto 40px;
+  animation: scrollLeft 18s linear infinite;
   animation-play-state: running;
+  user-select: none;
 }
 
-/* Pause marquee when any card is hovered (modern browsers) */
-.price-appearance:has(.price-card:hover) {
-  animation-play-state: paused;
-}
-
-/* Fallback: Pause animation when container is hovered (for older browsers) */
+/* Pause marquee when any card is hovered */
+.price-appearance:has(.price-card:hover),
 .price-appearance:hover {
   animation-play-state: paused;
 }
 
-/* Keyframes for continuous leftward movement */
+/* Keyframes for continuous leftward marquee */
+/* Update the pixel value if you add/remove cards (or change sizes) */
 @keyframes scrollLeft {
   0%   { transform: translateX(0); }
   100% { transform: translateX(-2760px); }
-  /* 2760px = 5 cards x (500px width + 16px*2 margin) + 4 gaps x 32px
-     Adjust this if your card size or gap changes!
-   */
 }
 
-/* Card styles */
+/* Price card styles */
 .price-card {
   width: 500px;
   height: 500px;
@@ -620,38 +737,59 @@ body {
   box-shadow: 0 12px 32px rgba(20,20,30,0.27);
   margin: 0 8px;
   background: #1e1e2f;
-  opacity: 1;
   transition: box-shadow 0.2s, transform 0.2s;
+  flex-shrink: 0;
+  opacity: 1;
 }
 
-/* Gradient backgrounds for each card */
 .price1 { background: linear-gradient(135deg, #181926 60%, #6c63ff 100%);}
 .price2 { background: linear-gradient(135deg, #222 55%, #fa709a 100%);}
 .price3 { background: linear-gradient(135deg, #181926 70%, #feb47b 100%); color: #24243e;}
 .price4 { background: linear-gradient(135deg, #23243e 60%, #23d7b0 100%);}
 .price5 { background: linear-gradient(135deg, #28293e 65%, #fd5fff 100%);}
 
-/* Stylish hover effect */
 .price-card:hover {
   box-shadow: 0 24px 48px 0 #0008;
-  transform: scale(1.028) translateY(-10px) rotate(2deg);
+  transform: scale(1.03) translateY(-10px) rotate(1.4deg);
   z-index: 2;
 }
 
-/* Responsive adjustments */
+/* Responsive – Large tablets/desktops */
 @media (max-width: 1400px) {
   .price-card { width: 350px; height: 350px; font-size: 1.4rem; }
-  .price-appearance { gap: 16px; }
+  .price-appearance { gap: 24px; }
+  @keyframes scrollLeft {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-1990px); }
+  }
 }
+
+/* Responsive – tablets/landscape phones */
 @media (max-width: 900px) {
   .price-card { width: 220px; height: 220px; font-size: 1rem; }
-  .price-appearance { gap: 8px; }
+  .price-appearance { gap: 16px; }
+  @keyframes scrollLeft {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-1300px); }
+  }
 }
+
+/* Responsive – portrait phones */
 @media (max-width: 550px) {
-  .price-card { width: 130px; height: 130px; font-size: 0.65rem; }
+  .price-card { width: 130px; height: 130px; font-size: 0.72rem; }
+  .price-appearance { gap: 8px; }
+  @keyframes scrollLeft {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-700px); }
+  }
 }
 
-/* Optional: Hide scrollbars if visible */
-.price-appearance::-webkit-scrollbar { display: none; }
-
+/* Hide scrollbars for webkit browsers */
+.price-appearance::-webkit-scrollbar {
+  display: none;
+}
+.price-appearance {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;     /* Firefox */
+}
 
