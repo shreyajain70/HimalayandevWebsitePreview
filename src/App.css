@@ -526,6 +526,7 @@
 
 /* Our Team CSS */
 
+
 .team-title {
   text-align: center;
   color: #06b6d4;
@@ -548,7 +549,7 @@
   overflow-x: hidden;
 }
 
-/* All cards the same fixed size, content vertically centered */
+/* All cards the same fixed size */
 .team-member-card {
   background: #181818;
   border-radius: 18px;
@@ -557,7 +558,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center; /* Vertically center content */
+  justify-content: flex-start;
   width: 300px;
   height: 340px;
   margin: 0 auto;
@@ -655,11 +656,10 @@
 }
 
 
+
 /* Our Price CSS */
-
-
 body {
-  background: #000;
+  background: #000; /* light woodsy green */
   margin: 0;
   min-height: 100vh;
   overflow-x: hidden;
@@ -674,90 +674,214 @@ body {
   margin: 2rem 0;
   font-size: 2.5rem;
   letter-spacing: 1px;
+  text-shadow: 0 0 10px #b1d8b7;
 }
 
-/* Ping-pong scroll animation for container */
-@keyframes pingPongScroll {
-  0% {
-    transform: translateX(0%);
+/* Tree animation: gentle side sway */
+@keyframes treeSway {
+  0%, 100% {
+    transform: rotate(-2deg) translateY(0);
   }
   50% {
-    transform: translateX(-50%);
-  }
-  100% {
-    transform: translateX(0%);
+    transform: rotate(2deg) translateY(-8px);
   }
 }
 
+/* Leaf bounce animation for individual cards */
+@keyframes leafBounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-12px) scale(1.05);
+  }
+}
+
+/* Layout cards in a tree shape using grid */
 .price-appearance {
-  display: flex;
-  gap: 20px;
-  width: fit-content;
-  padding: 1rem;
-  animation: pingPongScroll 20s ease-in-out infinite;
-  will-change: transform;
-  user-select: none;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: 100px 100px 1fr 100px;
+  grid-gap: 0;
+  width: 90vw;
+  max-width: 900px;
+  min-height: 420px;
   margin: 0 auto;
+  align-items: end;
+  animation: treeSway 7s infinite ease-in-out;
+  user-select: none;
+  will-change: transform;
+  position: relative;
 }
 
-.price-appearance:hover {
-  animation-play-state: paused;
-}
+/* Grid placement for each card - tree shape */
+.price1 { grid-row: 4; grid-column: 3; z-index: 2; }          /* Trunk (bottom center) */
+.price2 { grid-row: 3; grid-column: 2; }
+.price3 { grid-row: 3; grid-column: 4; }
+.price4 { grid-row: 2; grid-column: 1; }
+.price5 { grid-row: 2; grid-column: 5; }
 
-/* Price cards */
+/* Price cards styling - leaf/tree style */
 .price-card {
-  min-width: 300px;
-  height: 300px;
-  background: #1f1f2f;
-  color: #fff;
-  font-size: 1.5rem;
-  border-radius: 1rem;
+  min-width: 140px;
+  height: 120px;
+  background: #c2e59c;
+  color: #0f172a;
+  font-size: 1.1rem;
+  border-radius: 60% 60% 80% 80% / 50% 50% 80% 80%;
+  box-shadow:
+    0 8px 24px rgba(52, 78, 45, 0.18),
+    0 1px 3px rgba(120, 200, 120, 0.10);
   display: flex;
   justify-content: center;
   align-items: center;
   flex-shrink: 0;
+  text-align: center;
+  position: relative; /* For detail popup positioning */
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+  animation: leafBounce 3s infinite ease-in-out alternate;
+  cursor: default;
+}
+
+/* Staggered animation delays for realism */
+.price1 { animation-delay: 0s; }
+.price2 { animation-delay: 1s; }
+.price3 { animation-delay: 2s; }
+.price4 { animation-delay: 0.5s; }
+.price5 { animation-delay: 1.5s; }
+
+/* Branch-like connector bars (vertical) using before */
+.price1::before,
+.price2::before,
+.price3::before,
+.price4::before,
+.price5::before {
+  content: "";
+  position: absolute;
+  width: 6px;
+  background: #967259;
+  border-radius: 3px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+}
+
+/* Branch heights and positioning */
+.price2::before, .price3::before, .price4::before, .price5::before {
+  top: 100%;
+  height: 60px;
+}
+
+/* Trunk card has no branch above */
+.price1::before {
+  display: none;
+}
+
+/* Hover effect - enlarge and elevate */
+.price-card:hover {
+  transform: scale(1.08) translateY(-10px);
+  z-index: 3;
+  box-shadow: 0 18px 40px 0 rgba(52, 78, 45, 0.19), 0 1px 10px rgba(120, 200, 120, 0.07);
+  cursor: pointer;
+}
+
+/* Detail popup: initially hidden */
+.price-detail {
+  display: none;
+  margin-top: 0.75rem;
+  font-size: 0.9rem;
+  color: #2f4f2f;
+  background-color: rgba(216, 237, 216, 0.95);
+  border-radius: 10px;
+  box-shadow: 0 3px 6px rgba(52, 78, 45, 0.15);
+  padding: 0.5rem;
+  pointer-events: none; /* Avoid blocking hover */
+  transition: opacity 0.3s ease;
+  opacity: 0;
+  position: absolute;
+  bottom: -90px; /* Adjust vertical popup position */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 220px;
+  z-index: 5;
   text-align: center;
 }
 
-/* Hover effect */
-.price-card:hover {
-  transform: scale(1.05);
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.35);
+/* Show detail on hover */
+.price-card:hover .price-detail {
+  display: block;
+  opacity: 1;
+  pointer-events: auto;
+  z-index: 10;
 }
 
-/* Card backgrounds */
-.price1 {
-  background: linear-gradient(135deg, #1a1a2e, #16213e);
-}
-.price2 {
-  background: linear-gradient(135deg, #2b2e4a, #e84545);
-}
-.price3 {
-  background: linear-gradient(135deg, #232526, #414345);
-}
-.price4 {
-  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-}
-.price5 {
-  background: linear-gradient(135deg, #2c3e50, #4ca1af);
-}
+/* RESPONSIVE STYLES */
 
-/* Responsive: Tablets */
-@media (max-width: 900px) {
+/* Large screens (desktops wider than 1200px) - optional tweaks */
+@media (min-width: 1201px) {
   .price-card {
-    min-width: 200px;
-    height: 200px;
+    min-width: 180px;
+    height: 150px;
+    font-size: 1.3rem;
+  }
+  .price-detail {
+    bottom: -100px;
+    width: 240px;
     font-size: 1rem;
+  }
+  .price-appearance {
+    max-width: 1100px;
   }
 }
 
-/* Responsive: Phones */
-@media (max-width: 600px) {
+/* Medium screens - tablets (601px to 900px) */
+@media (max-width: 900px) and (min-width: 601px) {
+  .price-appearance {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 120px 120px 1fr 120px;
+    max-width: 700px;
+    min-height: 380px;
+  }
+  .price1 { grid-row: 4; grid-column: 2; }
+  .price2 { grid-row: 3; grid-column: 1; }
+  .price3 { grid-row: 3; grid-column: 3; }
+  .price4 { grid-row: 2; grid-column: 1; }
+  .price5 { grid-row: 2; grid-column: 3; }
   .price-card {
-    min-width: 140px;
-    height: 140px;
+    min-width: 120px;
+    height: 100px;
+    font-size: 1rem;
+    border-radius: 50% 50% 70% 70% / 50% 50% 70% 70%;
+  }
+  .price-detail {
+    bottom: -85px;
+    width: 200px;
     font-size: 0.85rem;
+  }
+}
+
+/* Small screens - phones (up to 600px) */
+@media (max-width: 600px) {
+  .price-appearance {
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(6, 80px);
+      width: 90vw;
+      min-height: 400px;
+    }
+  .price1 { grid-row: 6; grid-column: 2; }
+  .price2 { grid-row: 4; grid-column: 1; }
+  .price3 { grid-row: 4; grid-column: 3; }
+  .price4 { grid-row: 2; grid-column: 1; }
+  .price5 { grid-row: 2; grid-column: 3; }
+  .price-card {
+    min-width: 80px;
+    height: 58px;
+    font-size: 0.8rem;
+    border-radius: 50% / 60%;
+  }
+  .price-detail {
+    bottom: -75px;
+    width: 160px;
+    font-size: 0.75rem;
   }
 }
