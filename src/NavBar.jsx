@@ -9,7 +9,7 @@ export default function Navbar() {
         {/* Logo Section */}
         <div className="flex items-center space-x-3">
           <img
-            src="https://i.ibb.co/ynWFqg0r/Himalayan-Dev-logo.png"
+            src="/Himalayan Dev logo.png"
             alt="The Himalayan Devs"
             className="h-12 w-auto object-contain"
           />

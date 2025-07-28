@@ -5,7 +5,7 @@ import CursorFollower from './CursorFollower';
 import { Footer } from './Footer';
 import HeroSection from './HeroSection';
 import OurProcess from './OurProcess';
-import { OurSpecializations } from './Ourspecialization';
+import { Ourservices } from './OurServices';
 import TechStack from './TechStack';
 import OurTeam from './OurTeam';
 import OurPrice from './OurPrice';
@@ -18,7 +18,7 @@ function App() {
       <HeroSection />
       <AboutUs />
       <OurProcess />
-      <OurSpecializations></OurSpecializations>
+   <Ourservices></Ourservices>
       <TechStack></TechStack>
       <OurPrice></OurPrice>
       <OurTeam></OurTeam>

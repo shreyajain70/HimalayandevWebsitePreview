@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 
-export const OurSpecializations = () => {
-  const specializations = [
+export const Ourservices = () => {
+  const services = [
     {
       title: 'Web Development',
       description: 'Creating responsive and dynamic websites tailored to your business needs.',
@@ -136,13 +136,13 @@ export const OurSpecializations = () => {
   }, []);
 
   return (
-    <section className="our-specializations-section" id="services">
-      <div className="our-specializations-container">
-        <h2 className="our-specializations-title">
-          🚀 Our Specializations — Where Innovation Meets Execution
+    <section className="our-services-section" id="services">
+      <div className="our-services-container">
+        <h2 className="our-services-title">
+          🚀 Our Services — Where Innovation Meets Execution
         </h2>
-        <div className="specializations-grid">
-          {specializations.map((item, idx) => {
+        <div className="services-grid">
+          {services.map((item, idx) => {
             const isVisible = visibleCards.has(idx);
 
             // Split description into words to animate individually

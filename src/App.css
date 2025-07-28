@@ -3,19 +3,19 @@
 /* Our Specialization CSS */
 
 /* Section and container styles */
-.our-specializations-section {
+.our-services-section {
   background: #000;
   color: #fff;
   padding: 4rem 0;
 }
 
-.our-specializations-container {
+.our-services-container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 1rem;
 }
 
-.our-specializations-title {
+.our-services-title {
   font-size: 2rem;
   font-weight: bold;
   text-align: center;
@@ -24,20 +24,20 @@
 }
 
 /* Grid layout */
-.specializations-grid {
+.services-grid {
   display: grid;
   grid-template-columns: 1fr;
   gap: 2rem;
 }
 
 @media (min-width: 640px) {
-  .specializations-grid {
+  .services-grid {
     grid-template-columns: 1fr 1fr;
   }
 }
 
 @media (min-width: 1024px) {
-  .specializations-grid {
+  .services-grid {
     grid-template-columns: 1fr 1fr 1fr;
   }
 }
