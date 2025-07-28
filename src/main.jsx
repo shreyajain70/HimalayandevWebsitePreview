@@ -10,6 +10,8 @@ import TechStack from './TechStack';
 import OurTeam from './OurTeam';
 import OurPrice from './OurPrice';
 
+import { ClientReviewAndGraph } from './ClientReviewAndGraph';
+
 
 function App() {
   return (
@@ -18,13 +20,13 @@ function App() {
       <HeroSection />
       <AboutUs />
       <OurProcess />
-   <Ourservices></Ourservices>
+      <Ourservices></Ourservices>
       <TechStack></TechStack>
       <OurPrice></OurPrice>
+      
+      <ClientReviewAndGraph></ClientReviewAndGraph>
       <OurTeam></OurTeam>
       <Footer />
-
-
 
     </>
   );

@@ -90,6 +90,28 @@ export const Ourservices = () => {
       ),
       bg: 'bg-cyan',
     },
+    // NEW SERVICE ENTRY
+    {
+      title: 'Graphic Designing',
+      description: 'Creating visually captivating designs including logos, banners, and branding materials to elevate your brand identity.',
+      icon: (
+        <svg
+          className="specialization-icon"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth={2}
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M3 16v-1a4 4 0 014-4h10a4 4 0 014 4v1M16 8V4H8v4M8 4L3 9m18 0l-5-5"
+          />
+        </svg>
+      ),
+      bg: 'bg-rose', // new background color class, add in CSS
+    },
   ];
 
   const cardsRef = useRef([]);

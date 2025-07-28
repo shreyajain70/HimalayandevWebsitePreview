@@ -33,7 +33,6 @@ export function Footer() {
           <div className="contact-details">
             <h3>📞 Contact-Number: 7591035124</h3>
             <h3>📧 Email: thehimalayndevs712@gmail.com</h3>
-            <h3>🌐 Website: <a href="https://thehimalayandevs.com/">https://thehimalayandevs.com/</a></h3>
             <h3>🗂️ Portfolio: <a href="https://himalayandevsportfolio.netlify.app/">Portfolio</a></h3>
             <h3>🔗 LinkedIn: <a href="https://www.linkedin.com/in/the-himalayan-devs-264392376">LinkedIn</a></h3>
             <h3>📸 Instagram: <a href="https://www.instagram.com/thehimalayandevs712?igsh=cGJiYnJvMWwyN3lm">Instagram</a></h3>

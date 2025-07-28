@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 
-// Card - no description on card itself, modal on hover
+// TeamMemberCard Component
 const TeamMemberCard = ({ imgSrc, alt, name, role, onHoverStart, onHoverEnd }) => {
   const ref = useRef(null);
   const [visible, setVisible] = useState(false);
@@ -39,10 +39,12 @@ const TeamMemberCard = ({ imgSrc, alt, name, role, onHoverStart, onHoverEnd }) =
       <img className="team-member-img" src={imgSrc} alt={alt} />
       <h2 className="team-member-name">{name}</h2>
       <h3 className="team-member-role">{role}</h3>
+      {/* Description removed as requested */}
     </div>
   );
 };
 
+// Team members data
 const teamMembers = [
   {
     imgSrc: "/ManthanImage.png",
@@ -82,7 +84,7 @@ const teamMembers = [
     name: "Aniket",
     role: "Financial Analyst",
     description:
-      "Aniket is a results-driven Financial Analyst recognized for analytical acumen, financial modeling, and data-driven decision-making.Aniket’s skills include budgeting, forecasting, data visualization, and business intelligence—complemented by technical proficiency. His combination of financial insight and technical know-how supports effective cross-functional teamwork and innovative financial solutions.",
+      "Aniket is a results-driven Financial Analyst recognized for analytical acumen, financial modeling, and data-driven decision-making. Aniket’s skills include budgeting, forecasting, data visualization, and business intelligence—complemented by technical proficiency. His combination of financial insight and technical know-how supports effective cross-functional teamwork and innovative financial solutions.",
   },
   {
     imgSrc: "/KashishImage.jpg",
@@ -110,21 +112,29 @@ const teamMembers = [
   },
 ];
 
-// Modal shown on hover
+// PopupModal Component
 const PopupModal = ({ member }) => {
   if (!member) return null;
   return (
-    <div className="popup-modal" role="dialog" aria-modal="true">
+    <div
+      className="popup-modal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="modalName"
+      aria-describedby="modalDescription"
+    >
       <img className="popup-img" src={member.imgSrc} alt={member.alt} />
-      <h2 className="popup-name">{member.name}</h2>
+      <h2 className="popup-name" id="modalName">{member.name}</h2>
       <h3 className="popup-role">{member.role}</h3>
-      <p className="popup-description">{member.description}</p>
+      <p className="popup-description" id="modalDescription">{member.description}</p>
     </div>
   );
 };
 
+// OurTeam Component
 const OurTeam = () => {
   const [hovered, setHovered] = useState(null);
+
   return (
     <>
       <h1 className="team-title">Our Team</h1>
@@ -141,9 +151,7 @@ const OurTeam = () => {
           />
         ))}
       </div>
-      {hovered && (
-        <PopupModal member={hovered} />
-      )}
+      {hovered && <PopupModal member={hovered} />}
     </>
   );
 };
