@@ -526,7 +526,120 @@
 
 /* Our Team CSS */
 
+.team-title {
+  text-align: center;
+  color: #06b6d4;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 2.5rem;
+  margin: 2rem 0 1.5rem 0;
+  letter-spacing: 0.05em;
+}
+.team-details-div {
+  background: #000;
+  padding: 40px 20px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+  min-height: 100vh;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+.team-member-card {
+  background: #181818;
+  border-radius: 18px;
+  box-shadow: 0 4px 24px 0 rgba(0,0,0,0.55);
+  padding: 28px 24px 24px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  width: 300px;
+  height: 260px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: transform 0.4s, opacity 0.4s;
+  position: relative;
+  overflow: hidden;
+  background-clip: padding-box;
+}
+.team-member-card.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.team-member-card:hover, .team-member-card:focus {
+  transform: translateY(-12px) scale(1.045);
+  box-shadow: 0 10px 32px 0 rgba(0,0,0,0.9);
+  outline: 2px solid #06b6d4;
+}
+.team-member-img {
+  width: 88px;
+  height: 88px;
+  object-fit: cover;
+  border-radius: 50%;
+  background: #444;
+  border: 3px solid #292929;
+  margin-bottom: 18px;
+}
+.team-member-name { color: #fff; font-size: 1.3rem; margin: 0 0 7px; font-family: 'Montserrat', sans-serif; font-weight: 600; letter-spacing: 0.02em; }
+.team-member-role { color: #F5A623; font-size: 1rem; font-weight: 500; margin: 0 0 13px 0; letter-spacing: 0.01em; text-align: center; }
+.team-member-description { display: none; }
 
+/* Popup on hover */
+.popup-modal {
+  position: fixed;
+  top: 56%;
+  left: 50%;
+  width: 92vw;
+  max-width: 410px;
+  padding: 32px 24px 22px 24px;
+  background: #171b22;
+  border-radius: 22px;
+  box-shadow: 0 16px 64px rgba(0,0,0,0.7);
+  z-index: 1000;
+  transform: translate(-50%, -55%) scale(1);
+  animation: popupIn 0.25s cubic-bezier(0.43,0.13,0.23,0.96);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.popup-img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 16px;
+  border: 3px solid #282c34;
+  background: #444;
+}
+.popup-name { color: #fff; font-size: 1.5rem; font-family: 'Montserrat', sans-serif; font-weight: 700; margin: 14px 0 8px 0; }
+.popup-role { color: #A5D6F8; font-size: 1.07rem; font-weight: 500; margin-bottom: 15px;}
+.popup-description { color: #eee; font-size: 1rem; margin: 0; font-weight: 400; text-align: center; }
+
+@keyframes popupIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -60%) scale(0.93);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -55%) scale(1);
+  }
+}
+@media (max-width: 900px) {
+  .team-details-div { grid-template-columns: repeat(2, 1fr); }
+  .team-member-card { width: 91vw; max-width: 300px; min-width: 180px; height: 240px; }
+}
+@media (max-width: 500px) {
+  .team-details-div { grid-template-columns: 1fr; padding: 24px 8px; }
+  .team-member-card { width: 98vw; max-width: 340px; min-width: 150px; height: 210px; padding: 18px 10px 18px 10px; }
+  .popup-modal { max-width: 96vw; padding: 17vw 5vw 7vw 5vw; }
+}
+
+/* Base styles (unchanged) - abbreviated for clarity */
 .team-title {
   text-align: center;
   color: #06b6d4;
@@ -537,7 +650,6 @@
   letter-spacing: 0.05em;
 }
 
-/* Main team details container */
 .team-details-div {
   background: #000;
   padding: 40px 20px;
@@ -549,7 +661,6 @@
   overflow-x: hidden;
 }
 
-/* All cards the same fixed size */
 .team-member-card {
   background: #181818;
   border-radius: 18px;
@@ -559,13 +670,17 @@
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  width: 300px;
-  height: 340px;
+  width: 100%; /* changed from fixed 300px to full width for grid item */
+  max-width: 320px; /* cap width for large screens */
+  height: 260px;
   margin: 0 auto;
   box-sizing: border-box;
   opacity: 0;
   transform: translateY(30px);
-  transition: transform 0.4s ease, opacity 0.4s ease;
+  transition: transform 0.4s, opacity 0.4s;
+  position: relative;
+  overflow: hidden;
+  background-clip: padding-box;
 }
 
 .team-member-card.visible {
@@ -573,12 +688,13 @@
   transform: translateY(0);
 }
 
-.team-member-card:hover {
-  transform: translateY(-8px) scale(1.025);
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.7);
+.team-member-card:hover,
+.team-member-card:focus {
+  transform: translateY(-12px) scale(1.045);
+  box-shadow: 0 10px 32px 0 rgba(0, 0, 0, 0.9);
+  outline: 2px solid #06b6d4;
 }
 
-/* Team member image styling */
 .team-member-img {
   width: 88px;
   height: 88px;
@@ -587,19 +703,19 @@
   background: #444;
   border: 3px solid #292929;
   margin-bottom: 18px;
+  flex-shrink: 0;
 }
 
-/* Member name */
 .team-member-name {
   color: #fff;
   font-size: 1.3rem;
-  margin: 0 0 7px 0;
+  margin: 0 0 7px;
   font-family: 'Montserrat', sans-serif;
   font-weight: 600;
   letter-spacing: 0.02em;
+  text-align: center;
 }
 
-/* Member role */
 .team-member-role {
   color: #F5A623;
   font-size: 1rem;
@@ -609,52 +725,197 @@
   text-align: center;
 }
 
-/* Member description - hidden by default, shown only on hover */
 .team-member-description {
-  color: #d4d4d4;
-  font-size: 0.92rem;
+  display: none; /* only in popup */
+}
+
+/* Popup modal */
+.popup-modal {
+  position: fixed;
+  top: 56%;
+  left: 50%;
+  width: 90vw;
+  max-width: 410px;
+  padding: 32px 24px 22px 24px;
+  background: #171b22;
+  border-radius: 22px;
+  box-shadow: 0 16px 64px rgba(0, 0, 0, 0.7);
+  z-index: 1000;
+  transform: translate(-50%, -55%) scale(1);
+  animation: popupIn 0.25s cubic-bezier(0.43, 0.13, 0.23, 0.96);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.popup-img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 16px;
+  border: 3px solid #282c34;
+  background: #444;
+}
+
+.popup-name {
+  color: #fff;
+  font-size: 1.5rem;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  margin: 14px 0 8px 0;
+}
+
+.popup-role {
+  color: #A5D6F8;
+  font-size: 1.07rem;
+  font-weight: 500;
+  margin-bottom: 15px;
+}
+
+.popup-description {
+  color: #eee;
+  font-size: 1rem;
   margin: 0;
   font-weight: 400;
   text-align: center;
-  opacity: 0;
-  max-height: 0;
-  overflow: hidden;
-  transition: opacity 0.3s ease, max-height 0.3s ease;
-  pointer-events: none;
 }
 
-.team-member-card:hover .team-member-description {
-  opacity: 1;
-  max-height: 100px;
-  pointer-events: auto;
+/* Animations */
+@keyframes popupIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -60%) scale(0.93);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -55%) scale(1);
+  }
 }
 
-/* Responsive adjustments */
+/* Responsive breakpoints */
+
+/* Tablets and smaller desktops */
 @media (max-width: 900px) {
   .team-details-div {
     grid-template-columns: repeat(2, 1fr);
+    padding: 32px 16px;
   }
+
   .team-member-card {
-    width: 90vw;
-    max-width: 300px;
-    min-width: 180px;
-    height: 340px;
-  }
-}
-@media (max-width: 500px) {
-  .team-details-div {
-    grid-template-columns: 1fr;
-    padding: 24px 8px;
-  }
-  .team-member-card {
-    width: 98vw;
-    max-width: 360px;
-    min-width: 160px;
-    height: 350px;
-    padding: 18px 10px 18px 10px;
+    max-width: 90vw;
+    height: 250px;
   }
 }
 
+/* Mobile phones and small tablets */
+@media (max-width: 600px) {
+  .team-details-div {
+    grid-template-columns: 1fr;
+    padding: 24px 12px;
+  }
+
+  .team-member-card {
+    max-width: 95vw;
+    height: auto; /* allow height to grow on smaller screens */
+    padding: 24px 16px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6);
+  }
+
+  .team-member-img {
+    width: 72px;
+    height: 72px;
+    margin-bottom: 12px;
+  }
+
+  .team-member-name {
+    font-size: 1.1rem;
+  }
+
+  .team-member-role {
+    font-size: 0.95rem;
+    margin-bottom: 12px;
+  }
+
+  /* Popup modal adjustments */
+  .popup-modal {
+    width: 95vw;
+    max-width: none;
+    padding: 20px 16px;
+    border-radius: 16px;
+  }
+
+  .popup-img {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 12px;
+  }
+
+  .popup-name {
+    font-size: 1.3rem;
+    margin: 10px 0 6px 0;
+  }
+
+  .popup-role {
+    font-size: 1rem;
+    margin-bottom: 12px;
+  }
+
+  .popup-description {
+    font-size: 0.92rem;
+  }
+}
+
+/* Extra small devices (phones in portrait) */
+@media (max-width: 360px) {
+  .team-title {
+    font-size: 2rem;
+    margin: 1.5rem 0 1rem 0;
+  }
+
+  .team-member-card {
+    max-width: 100%;
+    padding: 20px 12px;
+    height: auto;
+  }
+
+  .team-member-img {
+    width: 64px;
+    height: 64px;
+  }
+
+  .team-member-name {
+    font-size: 1rem;
+  }
+
+  .team-member-role {
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+  }
+
+  .popup-modal {
+    width: 96vw;
+    padding: 16px 12px;
+  }
+
+  .popup-img {
+    width: 72px;
+    height: 72px;
+  }
+
+  .popup-name {
+    font-size: 1.15rem;
+  }
+
+  .popup-role {
+    font-size: 0.95rem;
+  }
+
+  .popup-description {
+    font-size: 0.9rem;
+  }
+}
 
 
 /* Our Price CSS */

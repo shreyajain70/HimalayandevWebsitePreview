@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 const aboutContent = [
   {
     title: "Who We Are",
-    text: "A tribe of frontend specialists, backend engineers, UI/UX designers, and creative thinkers — we’re united by our passion for building amazing experiences. We don’t just develop — we elevate.",
+    text: "A group of full stack developers, UI/UX designers, and creative thinkers — we’re united by our passion for building amazing experiences. We don’t just develop — we elevate.",
     color: "sky",
     delay: 0,
   },
@@ -16,7 +16,7 @@ const aboutContent = [
   },
   {
     title: "Our Philosophy",
-    text: "We believe code is not just syntax — it’s an experience. At The Himalayan Devs, we focus on clean UI, user-first design, and scalable solutions that feel as peaceful and powerful as the mountains we’re named after.",
+    text: "We believe code is not just syntax — it’s an experience. At The Himalayan Devs, we focus on clean UI, user-first design, smooth running and scalable solutions that feel as peaceful and powerful as the mountains we’re named after.",
     color: "purple",
     delay: 0.4,
   },
