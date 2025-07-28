@@ -1,5 +1,57 @@
 @import "tailwindcss";
 
+/* --- GLOBAL RESET & BASE STYLES --- */
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: #000;  /* body background black */
+  color: #fff;
+  box-sizing: border-box;
+  overflow-x: hidden; /* prevent horizontal scroll causing white gaps */
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+/* --- MAIN SECTION SPACING --- */
+.our-services-section,
+.Techstack-container,
+.footer-container,
+.team-details-div,
+.main-wrapper,
+.why-choose-us,
+.our-price-container {
+  margin-bottom: 4rem;  /* consistent gap between major sections */
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+/* Optional: consistent spacing for direct children inside main containers */
+.our-services-container > *,
+.Techstack-container > *,
+.footer-content > *,
+.team-details-div > *,
+.main-wrapper > *,
+.why-choose-us > *,
+.our-price-container > * {
+  margin-bottom: 1.5rem;
+}
+
+/* Fix footer bottom margin */
+.footer-bottom {
+  margin-top: 3rem;
+  margin-bottom: 0;
+}
+
+/* Optional: add consistent gap if using section tags */
+section {
+  margin-bottom: 4rem;
+}
+
+
+/* --------- YOUR ORIGINAL CSS BELOW (unchanged) ---------*/
+
 /* Our Specialization CSS */
 /* Section and container styles */
 .our-services-section {
@@ -733,334 +785,7 @@
   }
 }
 
-
-/* Our Price CSS */
-body {
-  background: #000;
-  /* light woodsy green */
-  margin: 0;
-  min-height: 100vh;
-  overflow-x: hidden;
-  font-family: 'Poppins', sans-serif;
-}
-
-/* Heading styling */
-.price-heading {
-  text-align: center;
-  color: #06b6d4;
-  font-weight: 700;
-  margin: 2rem 0;
-  font-size: 2.5rem;
-  letter-spacing: 1px;
-  text-shadow: 0 0 10px #b1d8b7;
-}
-
-/* Tree animation: gentle side sway */
-@keyframes treeSway {
-
-  0%,
-  100% {
-    transform: rotate(-2deg) translateY(0);
-  }
-
-  50% {
-    transform: rotate(2deg) translateY(-8px);
-  }
-}
-
-/* Leaf bounce animation for individual cards */
-@keyframes leafBounce {
-
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-
-  50% {
-    transform: translateY(-12px) scale(1.05);
-  }
-}
-
-/* Layout cards in a tree shape using grid */
-.price-appearance {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  grid-template-rows: 100px 100px 1fr 100px;
-  grid-gap: 0;
-  width: 90vw;
-  max-width: 900px;
-  min-height: 420px;
-  margin: 0 auto;
-  align-items: end;
-  animation: treeSway 7s infinite ease-in-out;
-  user-select: none;
-  will-change: transform;
-  position: relative;
-}
-
-/* Grid placement for each card - tree shape */
-.price1 {
-  grid-row: 4;
-  grid-column: 3;
-  z-index: 2;
-}
-
-/* Trunk (bottom center) */
-.price2 {
-  grid-row: 3;
-  grid-column: 2;
-}
-
-.price3 {
-  grid-row: 3;
-  grid-column: 4;
-}
-
-.price4 {
-  grid-row: 2;
-  grid-column: 1;
-}
-
-.price5 {
-  grid-row: 2;
-  grid-column: 5;
-}
-
-/* Price cards styling - leaf/tree style */
-.price-card {
-  min-width: 140px;
-  height: 120px;
-  background: #c2e59c;
-  color: #0f172a;
-  font-size: 1.1rem;
-  border-radius: 60% 60% 80% 80% / 50% 50% 80% 80%;
-  box-shadow:
-    0 8px 24px rgba(52, 78, 45, 0.18),
-    0 1px 3px rgba(120, 200, 120, 0.10);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-shrink: 0;
-  text-align: center;
-  position: relative;
-  /* For detail popup positioning */
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  animation: leafBounce 3s infinite ease-in-out alternate;
-  cursor: default;
-}
-
-/* Staggered animation delays for realism */
-.price1 {
-  animation-delay: 0s;
-}
-
-.price2 {
-  animation-delay: 1s;
-}
-
-.price3 {
-  animation-delay: 2s;
-}
-
-.price4 {
-  animation-delay: 0.5s;
-}
-
-.price5 {
-  animation-delay: 1.5s;
-}
-
-/* Branch-like connector bars (vertical) using before */
-.price1::before,
-.price2::before,
-.price3::before,
-.price4::before,
-.price5::before {
-  content: "";
-  position: absolute;
-  width: 6px;
-  background: #967259;
-  border-radius: 3px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 1;
-}
-
-/* Branch heights and positioning */
-.price2::before,
-.price3::before,
-.price4::before,
-.price5::before {
-  top: 100%;
-  height: 60px;
-}
-
-/* Trunk card has no branch above */
-.price1::before {
-  display: none;
-}
-
-/* Hover effect - enlarge and elevate */
-.price-card:hover {
-  transform: scale(1.08) translateY(-10px);
-  z-index: 3;
-  box-shadow: 0 18px 40px 0 rgba(52, 78, 45, 0.19), 0 1px 10px rgba(120, 200, 120, 0.07);
-  cursor: pointer;
-}
-
-/* Detail popup: initially hidden */
-.price-detail {
-  display: none;
-  margin-top: 0.75rem;
-  font-size: 0.9rem;
-  color: #2f4f2f;
-  background-color: rgba(216, 237, 216, 0.95);
-  border-radius: 10px;
-  box-shadow: 0 3px 6px rgba(52, 78, 45, 0.15);
-  padding: 0.5rem;
-  pointer-events: none;
-  /* Avoid blocking hover */
-  transition: opacity 0.3s ease;
-  opacity: 0;
-  position: absolute;
-  bottom: -90px;
-  /* Adjust vertical popup position */
-  left: 50%;
-  transform: translateX(-50%);
-  width: 220px;
-  z-index: 5;
-  text-align: center;
-}
-
-/* Show detail on hover */
-.price-card:hover .price-detail {
-  display: block;
-  opacity: 1;
-  pointer-events: auto;
-  z-index: 10;
-}
-
-/* RESPONSIVE STYLES */
-
-/* Large screens (desktops wider than 1200px) - optional tweaks */
-@media (min-width: 1201px) {
-  .price-card {
-    min-width: 180px;
-    height: 150px;
-    font-size: 1.3rem;
-  }
-
-  .price-detail {
-    bottom: -100px;
-    width: 240px;
-    font-size: 1rem;
-  }
-
-  .price-appearance {
-    max-width: 1100px;
-  }
-}
-
-/* Medium screens - tablets (601px to 900px) */
-@media (max-width: 900px) and (min-width: 601px) {
-  .price-appearance {
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: 120px 120px 1fr 120px;
-    max-width: 700px;
-    min-height: 380px;
-  }
-
-  .price1 {
-    grid-row: 4;
-    grid-column: 2;
-  }
-
-  .price2 {
-    grid-row: 3;
-    grid-column: 1;
-  }
-
-  .price3 {
-    grid-row: 3;
-    grid-column: 3;
-  }
-
-  .price4 {
-    grid-row: 2;
-    grid-column: 1;
-  }
-
-  .price5 {
-    grid-row: 2;
-    grid-column: 3;
-  }
-
-  .price-card {
-    min-width: 120px;
-    height: 100px;
-    font-size: 1rem;
-    border-radius: 50% 50% 70% 70% / 50% 50% 70% 70%;
-  }
-
-  .price-detail {
-    bottom: -85px;
-    width: 200px;
-    font-size: 0.85rem;
-  }
-}
-
-/* Small screens - phones (up to 600px) */
-@media (max-width: 600px) {
-  .price-appearance {
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(6, 80px);
-    width: 90vw;
-    min-height: 400px;
-  }
-
-  .price1 {
-    grid-row: 6;
-    grid-column: 2;
-  }
-
-  .price2 {
-    grid-row: 4;
-    grid-column: 1;
-  }
-
-  .price3 {
-    grid-row: 4;
-    grid-column: 3;
-  }
-
-  .price4 {
-    grid-row: 2;
-    grid-column: 1;
-  }
-
-  .price5 {
-    grid-row: 2;
-    grid-column: 3;
-  }
-
-  .price-card {
-    min-width: 80px;
-    height: 58px;
-    font-size: 0.8rem;
-    border-radius: 50% / 60%;
-  }
-
-  .price-detail {
-    bottom: -75px;
-    width: 160px;
-    font-size: 0.75rem;
-  }
-}
-
-
 /* ClientReviewAndGraph CSS */
-
-
 
 
 /* Base Container */
@@ -1170,4 +895,227 @@ body {
   color: #f1f5f9;
   font-size: 0.85rem;
   line-height: 22px;
+}
+
+
+
+/* Why Choose Us CSS */
+
+.why-choose-us {
+  background: #000;
+  padding: 60px 20px;
+  text-align: center;
+  margin-top: 40px;
+}
+
+.why-choose-us h2 {
+  font-size: 2.5rem;
+  color: #fff;
+  margin-bottom: 30px;
+  opacity: 0;
+  transform: translateY(-30px);
+  animation: fadeInDown 1s forwards;
+  letter-spacing: 2px;
+  text-shadow: 0 2px 16px rgba(0,0,0,0.45);
+}
+
+.features-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  justify-content: center;
+}
+
+.feature {
+  background: linear-gradient(135deg, #24243e 40%, #0f2027 100%);
+  padding: 28px 18px;
+  border-radius: 18px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.24);
+  width: 310px;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: slideUp 1.1s forwards;
+  animation-delay: 0.1s;
+  transition: transform 0.35s, box-shadow 0.35s;
+  border: 2px solid rgba(255,255,255,0.10);
+}
+
+.feature:hover {
+  transform: translateY(-4px) scale(1.038);
+  box-shadow: 0 14px 42px rgba(80,150,255,0.17), 0 2px 12px rgba(30,30,40,0.19);
+  border: 2px solid #57e0eb;
+}
+
+.feature h3 {
+  color: #57e0eb; /* Aqua cyan heading */
+  font-size: 1.45rem;
+  margin-bottom: 10px;
+  letter-spacing: 1px;
+  text-shadow: 0 2px 10px #18182380;
+}
+
+.feature p {
+  color: #e2eeff;
+  line-height: 1.6;
+  font-size: 1.07rem;
+  margin: 0;
+}
+
+@keyframes fadeInDown {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 900px) {
+  .features-container {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+
+
+/* Our Price CSS */
+
+
+
+
+/* ===== Container ===== */
+.our-price-container {
+  background-color: #000;
+  padding: 80px 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #fff;
+  text-align: center;
+}
+
+/* ===== Heading ===== */
+.our-price-heading {
+  font-size: 3rem;
+  color: #38bdf8;
+  margin-bottom: 50px;
+  font-weight: bold;
+}
+
+/* ===== Cards Wrapper ===== */
+.price-cards-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+}
+
+/* ===== Single Price Card ===== */
+.price-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  background: rgba(17, 24, 39, 0.6);
+  border: 1px solid #3b82f6;
+  border-radius: 20px;
+  padding: 25px;
+  width: 280px;
+  min-height: 240px;
+  text-align: left;
+  box-shadow: 0 0 15px rgba(59, 130, 246, 0.1);
+  backdrop-filter: blur(8px);
+  transition: all 0.3s ease;
+  animation: fadeIn 0.8s ease forwards;
+  opacity: 0;
+}
+
+.price-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 0 30px rgba(59, 130, 246, 0.5);
+  border-color: #06b6d4;
+}
+
+/* ===== Dual Card Container ===== */
+.dual-card {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  width: 580px;
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid #06b6d4;
+  border-radius: 20px;
+  padding: 20px;
+  backdrop-filter: blur(10px);
+  animation: fadeIn 0.8s ease forwards;
+  opacity: 0;
+}
+
+/* ===== Each Part Inside Dual Card ===== */
+.dual-part {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: rgba(17, 24, 39, 0.7);
+  border-radius: 15px;
+  padding: 15px;
+  min-height: 200px;
+  border: 1px dashed #3b82f6;
+  transition: all 0.3s ease;
+}
+
+.dual-part:hover {
+  box-shadow: 0 0 20px rgba(6, 182, 212, 0.4);
+  transform: translateY(-4px);
+}
+
+/* ===== Typography ===== */
+.price-title {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #3b82f6;
+  margin-bottom: 10px;
+}
+
+.price-description {
+  font-size: 0.95rem;
+  color: #d1d5db;
+  margin-bottom: 12px;
+}
+
+.price-amount {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #22c55e;
+  border-top: 1px solid #1f2937;
+  padding-top: 8px;
+}
+
+/* ===== Fade Animation ===== */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+
+/* ===== Responsive Design ===== */
+@media (max-width: 768px) {
+  .price-card,
+  .dual-card {
+    width: 90%;
+  }
+
+  .dual-card {
+    flex-direction: column;
+  }
 }

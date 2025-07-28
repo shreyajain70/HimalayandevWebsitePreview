@@ -9,8 +9,8 @@ import { Ourservices } from './OurServices';
 import TechStack from './TechStack';
 import OurTeam from './OurTeam';
 import OurPrice from './OurPrice';
-
 import { ClientReviewAndGraph } from './ClientReviewAndGraph';
+import WhyChooseUs from './WhyChooseUs';
 
 
 function App() {
@@ -23,10 +23,12 @@ function App() {
       <Ourservices></Ourservices>
       <TechStack></TechStack>
       <OurPrice></OurPrice>
-      
+      <WhyChooseUs></WhyChooseUs>
       <ClientReviewAndGraph></ClientReviewAndGraph>
       <OurTeam></OurTeam>
       <Footer />
+
+
 
     </>
   );
