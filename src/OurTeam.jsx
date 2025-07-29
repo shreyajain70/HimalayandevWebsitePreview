@@ -39,7 +39,6 @@ const TeamMemberCard = ({ imgSrc, alt, name, role, onHoverStart, onHoverEnd }) =
       <img className="team-member-img" src={imgSrc} alt={alt} />
       <h2 className="team-member-name">{name}</h2>
       <h3 className="team-member-role">{role}</h3>
-      {/* Description removed as requested */}
     </div>
   );
 };
@@ -113,21 +112,54 @@ const teamMembers = [
 ];
 
 // PopupModal Component
-const PopupModal = ({ member }) => {
+const PopupModal = ({ member, onClose }) => {
+  const modalRef = useRef(null);
+
+  // Close on ESC key
+  useEffect(() => {
+    const onKeyDown = (e) => {
+      if (e.key === "Escape") onClose();
+    };
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [onClose]);
+
+  // Focus modal on open
+  useEffect(() => {
+    if (modalRef.current) modalRef.current.focus();
+  }, []);
+
   if (!member) return null;
+
   return (
-    <div
-      className="popup-modal"
-      role="dialog"
-      aria-modal="true"
-      aria-labelledby="modalName"
-      aria-describedby="modalDescription"
-    >
-      <img className="popup-img" src={member.imgSrc} alt={member.alt} />
-      <h2 className="popup-name" id="modalName">{member.name}</h2>
-      <h3 className="popup-role">{member.role}</h3>
-      <p className="popup-description" id="modalDescription">{member.description}</p>
-    </div>
+    <>
+      <div className="modal-backdrop" onClick={onClose} aria-hidden="true" />
+      <div
+        className="popup-modal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="modalName"
+        aria-describedby="modalDescription"
+        tabIndex={-1}
+        ref={modalRef}
+      >
+        <button
+          className="modal-close-button"
+          onClick={onClose}
+          aria-label="Close modal"
+        >
+          &times;
+        </button>
+        <img className="popup-img" src={member.imgSrc} alt={member.alt} />
+        <h2 className="popup-name" id="modalName">
+          {member.name}
+        </h2>
+        <h3 className="popup-role">{member.role}</h3>
+        <p className="popup-description" id="modalDescription">
+          {member.description}
+        </p>
+      </div>
+    </>
   );
 };
 
@@ -151,7 +183,7 @@ const OurTeam = () => {
           />
         ))}
       </div>
-      {hovered && <PopupModal member={hovered} />}
+      {hovered && <PopupModal member={hovered} onClose={() => setHovered(null)} />}
     </>
   );
 };

@@ -8,9 +8,10 @@ import OurProcess from './OurProcess';
 import { Ourservices } from './OurServices';
 import TechStack from './TechStack';
 import OurTeam from './OurTeam';
-import OurPrice from './OurPrice';
-import { ClientReviewAndGraph } from './ClientReviewAndGraph';
+import WhatWeOffer from './WhatWeOffer';
 import WhyChooseUs from './WhyChooseUs';
+import { ClientReview } from './ClientReview';
+import { ProjectCounters } from './ProjectCounter';
 
 
 function App() {
@@ -22,11 +23,13 @@ function App() {
       <OurProcess />
       <Ourservices></Ourservices>
       <TechStack></TechStack>
-      <OurPrice></OurPrice>
+      <WhatWeOffer></WhatWeOffer>
+      <ProjectCounters></ProjectCounters>
+      <ClientReview></ClientReview>
       <WhyChooseUs></WhyChooseUs>
-      <ClientReviewAndGraph></ClientReviewAndGraph>
       <OurTeam></OurTeam>
       <Footer />
+
 
 
 
