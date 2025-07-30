@@ -46,7 +46,7 @@ export const ClientReview = () => {
       imgSrc: "/FitLowKey.jpg",
     },
     {
-      name: "Swami Ram Tirath Public School(Mehatput, HP)",
+      name: "Swami Ram Tirath Public School (Mehatput, HP)",
       feedback:
         "We are pleased with the work delivered by your team. The staff portfolios created for our staff were well-designed  and professionally presented. It has greatly improved how we showcase our faculty. Thank you for your support and timely execution.",
       imgSrc: "/SchoolImage.png",
@@ -56,6 +56,12 @@ export const ClientReview = () => {
       feedback:
         "We truly appreciate the work and dedication your team put into our project. The collaboration was smooth, and the final outcome exceeded our expectations. Looking forward to working together again!",
       imgSrc: "/HelloSolarImage.jpg",
+    },
+     {
+      name: "The Mobile Zone (Jassur, HP) ",
+      feedback:
+        "We are fully satisfied with the development work delivered by your team. The quality, attention to detail, and timely execution. It was a great experience collaborating with such a professional team.",
+      imgSrc: "/TheMobileZoneImage.jpg",
     },
   ];
 
