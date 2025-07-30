@@ -809,13 +809,7 @@ section {
   }
 }
 
-
-
-
-
-
-
-
+/* Our Team CSS */
 
 .our-team-section {
   background: #000;
@@ -889,4 +883,255 @@ section {
   line-height: 1.55;
   color: #d7d7d7;
   margin: 0;
+}
+
+
+
+
+
+
+
+
+/* Main container */
+.ContactUs-MainPage {
+  background-color: #000;
+  color: white;
+  min-height: 100vh;
+  padding: 2rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Heading */
+.ContactUs-Heading {
+  color: #2a8fff;
+  font-size: 3rem;
+  margin-bottom: 2rem;
+  animation: slideInFromTop 1s ease forwards;
+}
+
+/* Form container */
+.ContactUs-Form {
+  background: #111;
+  padding: 2rem 3rem;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(42, 143, 255, 0.6);
+  width: 100%;
+  max-width: 420px;
+  animation: scaleUp 0.8s ease forwards;
+}
+
+/* Labels */
+.ContactUs-Label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: #2a8fff;
+}
+
+/* Form inputs */
+.ContactUs-Input {
+  width: 100%;
+  padding: 0.6rem 1rem;
+  margin-bottom: 1.6rem;
+  border: 2px solid #2a8fff;
+  border-radius: 6px;
+  background-color: #121212;
+  color: white;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+.ContactUs-Input::placeholder {
+  color: #7aaeff;
+  opacity: 0.7;
+}
+
+.ContactUs-Input:focus {
+  border-color: #4da1ff;
+  box-shadow: 0 0 8px #4da1ff;
+  background-color: #1e1e1e;
+}
+
+/* Submit button */
+.ContactUs-SubmitButton {
+  width: 100%;
+  padding: 0.8rem;
+  background: linear-gradient(135deg, #2a8fff, #4da1ff);
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-weight: 700;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: background 0.4s ease, transform 0.2s ease, box-shadow 0.4s ease;
+  box-shadow: 0 5px 15px rgba(42, 143, 255, 0.6);
+  margin-bottom: 1rem;
+}
+
+.ContactUs-SubmitButton:hover {
+  background: linear-gradient(135deg, #4da1ff, #2a8fff);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(42, 143, 255, 0.8);
+}
+
+.ContactUs-SubmitButton:active {
+  transform: translateY(1px);
+  box-shadow: 0 5px 10px rgba(42, 143, 255, 0.7);
+}
+
+/* Validation error message */
+.ContactUs-ErrorMessage {
+  color: #ff4d4f;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
+  user-select: none;
+}
+
+/* Validation warning message */
+.ContactUs-WarningMessage {
+  color: #faad14;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
+  user-select: none;
+}
+
+/* Contact info below form */
+.ContactUs-ContactInfo {
+  color: white;
+  font-size: 1rem;
+  margin-top: 1rem;
+  max-width: 420px;
+  text-align: left;
+  user-select: text;
+}
+
+.ContactUs-ContactInfo p {
+  margin: 0.3rem 0;
+  display: flex;
+  align-items: center;
+}
+
+/* Highlight phone number */
+.Note-contact-number {
+  color: #2a8fff;
+  margin-left: 0.3rem;
+  font-weight: 700;
+}
+
+/* Style for email and instagram links */
+.Note-contact-link {
+  color: white;
+  margin-left: 0.3rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  cursor: pointer;
+  word-break: break-word;
+}
+
+.Note-contact-link:hover {
+  color: #2a8fff;
+  text-decoration: underline;
+}
+
+/* Back button */
+.ContactUs-BackButton {
+  background: transparent;
+  color: #2a8fff;
+  border: none;
+  font-size: 1rem;
+  text-decoration: underline;
+  cursor: pointer;
+  padding: 0;
+  user-select: none;
+  transition: color 0.3s ease;
+  margin-top: 1rem;
+}
+
+.ContactUs-BackButton:hover {
+  color: #4da1ff;
+}
+
+/* Note container */
+.Note-container {
+  background-color: #000;
+  color: white;
+  max-width: 500px;
+  height: 400px;
+  padding: 2rem 3rem;
+  margin: 2rem auto;
+  border-radius: 12px;
+  box-shadow: 0 0 25px rgba(42, 143, 255, 0.7);
+  text-align: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  animation: fadeSlideUp 1.2s ease forwards;
+  opacity: 0;
+  transform: translateY(30px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Note image */
+.Note-image {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  box-shadow: 0 0 15px #2a8fff;
+  margin-bottom: 1.5rem;
+  object-fit: cover;
+}
+
+/* Note heading */
+.Note-heading {
+  color: #2a8fff;
+  font-size: 2.2rem;
+  margin-bottom: 1rem;
+}
+
+/* Note message */
+.Note-message {
+  color: white;
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  line-height: 1.4;
+  user-select: text;
+}
+
+/* Animations */
+@keyframes slideInFromTop {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleUp {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes fadeSlideUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
