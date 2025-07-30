@@ -7,7 +7,7 @@ import HeroSection from './HeroSection';
 import OurProcess from './OurProcess';
 import { Ourservices } from './OurServices';
 import TechStack from './TechStack';
-import OurTeam from './OurTeam';
+import { OurTeam } from './OurTeam';
 import WhatWeOffer from './WhatWeOffer';
 import WhyChooseUs from './WhyChooseUs';
 import { ClientReview } from './ClientReview';
@@ -29,7 +29,6 @@ function App() {
       <WhyChooseUs></WhyChooseUs>
       <OurTeam></OurTeam>
       <Footer />
-
 
 
 
