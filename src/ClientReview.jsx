@@ -27,24 +27,30 @@ export const ClientReview = () => {
   }, []);
 
   const clients = [
-    {
-      name: "Malhotra RoadLines",
-      feedback:
-        "Malhotra RoadLines has been an outstanding partner, providing reliable logistics solutions with impressive professionalism and seamless collaboration, especially given their unique army collaboration.",
-      imgSrc: "/MalhotraRoadlines.jpg",
-    },
-    {
-      name: "Siddharth Enterprises",
-      feedback:
-        "Siddarth Enterprises offers exceptional services with a wide variety of products and remarkable customer care, making them a trusted general store in the community.",
-      imgSrc: "/SiddharthEnterprises.jpg",
-    },
-    {
-      name: "Fitlowkey Pvt Ltd.",
-      feedback:
-        "Fitlowkey Pvt Ltd. has revolutionized online clothing with trendy designs and top-notch quality apparel. Their customer-centric approach ensures great satisfaction.",
-      imgSrc: "/FitLowKey.jpg",
-    },
+{
+  name: "Malhotra RoadLines",
+  feedback:
+    "Your service has significantly simplified my work. Managing and organizing my data used to be a challenge, but now it's much easier. It has also played a major role in expanding my reach and taking my business to new heights.",
+  imgSrc: "/MalhotraRoadlinesImage.png",
+},
+{
+  name: "Siddharth Enterprises",
+  feedback:
+    "We truly appreciate your work. Now, our products are easily accessible to customers, which has greatly supported the growth of our business.",
+  imgSrc: "/SiddharthEnterprises.jpg",
+},
+{
+  name: "Fitlowkey Pvt Ltd.",
+  feedback:
+    "Collaborating with you has boosted the visibility of my startup. It's now more recognized among the public, and this partnership has brought me one step closer to realizing my dream.",
+  imgSrc: "/FitLowKey.jpg",
+},
+{
+  name: "Swami Ram Tirath Public School(Mehatput, HP)",
+  feedback:
+    "We are pleased with the work delivered by your team. The staff portfolios created for our staff were well-designed  and professionally presented. It has greatly improved how we showcase our faculty. Thank you for your support and timely execution.",
+  imgSrc: "/SchoolImage.png",
+},
   ];
 
   return (

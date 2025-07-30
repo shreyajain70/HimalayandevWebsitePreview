@@ -26,7 +26,7 @@ export const ProjectCounters = () => {
     { title: "Portfolio", number: 20, plus: true },
     { title: "Website", number: 15, plus: true },
     { title: "Figma Design", number: 30, plus: true },
-    { title: "App Development", number: 6, plus: true },
+    { title: "Apps", number: 6, plus: true },
     { title: "Graphic Designing", number: 45, plus: true },
   ];
 
