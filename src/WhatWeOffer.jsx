@@ -1,47 +1,55 @@
 import React from "react";
 
-// You can use react-icons or SVGs; here's a solution with emojis for universal rendering.
-// For production, consider installing react-icons and importing icons as needed.
+// Icon mapping for sections and features
+const iconMap = {
+  "Personal Portfolio Creation": "💼",
+  "Figma Design": "🎨",
+  "Custom Website": "🌐",
+  "Mobile App UI/UX Design": "📱",
+  "Landing Page Services": "🚩",
+  "Custom Website Packages": "🛠️",
+  "Graphic Design Solutions": "🖼️",
+  "Landing Page (Local Hosting)": "🖥️",
+  "Landing Page (Domain & Hosting)": "🌍",
+  "Custom Website (Local Hosting)": "🧩",
+  "Custom Website (Domain & Hosting)": "🔗",
+  "Poster Design (Graphic)": "📰",
+  "Video Design (Graphic)": "🎬",
+};
 
 const pricingData = [
   {
-    title: "Personal Portfolio Creation",
-    icon: "🧑‍💻",
-    description:
-      "We create a personalized portfolio website that showcases your skills, projects, and contact details in a modern and engaging way — perfect for freelancers, professionals, and creatives looking to build a strong online presence.",
-  },
-  {
-    title: "Figma Design",
-    icon: "🎨",
-    description:
-      "We design high-quality visual layouts for websites and apps using Figma. These mockups give you a clear, interactive preview of your project’s look and feel — before any coding begins.",
-  },
-  {
     title: "Custom Website",
-    icon: "🌐",
     description:
       "We build fully customized websites from the ground up — including both the design (frontend) and the functionality (backend). Ideal for businesses or individuals who want a unique, professional, and fully functional online platform.",
   },
   {
     title: "Mobile App UI/UX Design",
-    icon: "📱",
     description:
       "We design intuitive and visually appealing mobile app interfaces for Android and iOS. Our focus is on delivering smooth, user-friendly experiences that look great and function seamlessly.",
   },
   {
+    title: "Personal Portfolio Creation",
+    description:
+      "We create a personalized portfolio website that showcases your skills, projects, and contact details in a modern and engaging way — perfect for freelancers, professionals, and creatives looking to build a strong online presence.",
+  },
+  {
+    title: "Figma Design",
+    description:
+      "We design high-quality visual layouts for websites and apps using Figma. These mockups give you a clear, interactive preview of your project’s look and feel — before any coding begins.",
+  },
+  
+  {
     dual: true,
     dualTitle: "Landing Page Services",
-    icon: "🚀",
     parts: [
       {
         title: "Landing Page (Local Hosting)",
-        icon: "💻",
         description:
           "A simple, one-page website hosted on your local system — ideal for previews, presentations, or internal testing before going live.",
       },
       {
         title: "Landing Page (Domain & Hosting)",
-        icon: "🌍",
         description:
           "A fully functional landing page published online with your own domain name — perfect for capturing leads or showcasing services publicly.",
       },
@@ -50,17 +58,14 @@ const pricingData = [
   {
     dual: true,
     dualTitle: "Custom Website Packages",
-    icon: "📦",
     parts: [
       {
         title: "Custom Website (Local Hosting)",
-        icon: "🖥️",
         description:
           "A 4-5 section website designed for demonstration or offline use — great for showcasing layout and functionality before deployment.",
       },
       {
         title: "Custom Website (Domain & Hosting)",
-        icon: "🌎",
         description:
           "A complete, multi-section website made live on your custom domain — tailored to your needs and accessible to everyone online.",
       },
@@ -69,17 +74,14 @@ const pricingData = [
   {
     dual: true,
     dualTitle: "Graphic Design Solutions",
-    icon: "🖌️",
     parts: [
       {
         title: "Poster Design (Graphic)",
-        icon: "🖼️",
         description:
           "A professionally designed static poster — suitable for online sharing or high-quality printing for events, promotions, or branding.",
       },
       {
         title: "Video Design (Graphic)",
-        icon: "🎬",
         description:
           "Engaging short videos — animated or edited — perfect for marketing, social media promotion, or brand storytelling.",
       },
@@ -92,250 +94,225 @@ const WhatWeOffer = () => {
     <>
       <style>{`
         .our-price-container {
-          background-color: #000000;
+          background: #000;
           min-height: 100vh;
           padding: 40px 20px;
-          font-family: 'Fira Code', 'Courier New', Courier, monospace;
-          color: #d4d4d4;
+          color: #e1e8f7;
+          font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
           display: flex;
           flex-direction: column;
           align-items: center;
-          user-select: text;
         }
         .our-price-heading {
           font-size: 2.8rem;
-          font-weight: 700;
-          margin-bottom: 40px;
-          color: #61dafb;
-          text-shadow: 0 0 8px #61dafbaa;
-          user-select: text;
+          font-weight: 800;
+          margin-bottom: 50px;
+          display: flex;
+          align-items: center;
+          gap: 16px;
+          color: #349aff;
+          letter-spacing: 1.5px;
           text-transform: uppercase;
-          letter-spacing: 0.15em;
-          font-family: 'Fira Code', monospace;
-          display: flex;
-          align-items: center;
-          gap: 18px;
-        }
-        .offer-main-icon {
-          font-size: 2.3rem;
-          vertical-align: middle;
-        }
-        .price-cards-wrapper {
-          background-color: #111111;
-          border-radius: 12px;
-          width: 96vw;
-          max-width: 960px;
-          box-shadow:
-            0 4px 15px rgba(0, 0, 0, 0.9);
-          overflow: hidden;
-          display: flex;
-          flex-direction: column;
-          user-select: text;
-          font-size: 1rem;
-        }
-        .editor-top-bar {
-          background: #1a1a2a;
-          height: 40px;
-          display: flex;
-          align-items: center;
-          padding: 0 18px;
-          gap: 12px;
-          border-bottom: 1.5px solid #333355;
           user-select: none;
+          text-align: center;
+          text-shadow: 0 0 14px #3e72e1cc, 0 0 1px #4784ed;
         }
-        .control-btn {
-          width: 14px;
-          height: 14px;
+        .heading-ico {
+          font-size: 2.2rem;
+          filter: drop-shadow(0 0 10px #349affaa);
+        }
+        .timeline {
+          position: relative;
+          max-width: 700px;
+          width: 100%;
+          padding-left: 40px;
+          border-left: 4px solid #349aff;
+          box-sizing: border-box;
+        }
+        .timeline::before {
+          content: "🚀";
+          position: absolute;
+          left: -32px;
+          top: -20px;
+          font-size: 40px;
+          color: #4784ed;
+          animation: rocket-glow 2.5s infinite alternate ease-in-out;
+          text-shadow: 0 0 12px #349affcc;
+        }
+        @keyframes rocket-glow {
+          from { text-shadow: 0 0 8px #60b7ffcc, 0 0 16px #4784edaa;}
+          to { text-shadow: 0 0 30px #349aff, 0 0 20px #60b7ff; }
+        }
+        .event {
+          position: relative;
+          margin-bottom: 40px;
+          cursor: default;
+          transition: transform 0.3s cubic-bezier(.25,.8,.25,1), box-shadow .3s;
+        }
+        .event:hover {
+          transform: translateX(10px) scale(1.03);
+          filter: drop-shadow(0 0 16px #349aff88);
+        }
+        /* Event marker */
+        .event::before {
+          content: "";
+          position: absolute;
+          left: -52px;
+          top: 8px;
+          width: 20px;
+          height: 20px;
+          background: linear-gradient(135deg,#4784ed 60%,#60b7ff 100%);
           border-radius: 50%;
-          box-shadow: inset 0 0 2px #00000090;
-          display: inline-block;
-        }
-        .close-btn {
-          background-color: #ff5f56;
-        }
-        .minimize-btn {
-          background-color: #ffbd2e;
-        }
-        .zoom-btn {
-          background-color: #27c93f;
-        }
-        .price-card {
-          background: #000000;
-          margin: 0 20px 20px 20px;
-          border-radius: 8px;
-          border: 1px solid #444444;
-          padding: 20px 24px;
-          box-shadow:
-            inset 0 0 10px #555555cc;
-          transition: box-shadow 0.3s ease;
-          cursor: default;
-          display: flex;
-          flex-direction: column;
-          user-select: text;
-          position: relative;
-        }
-        .price-card .card-item-icon {
-          font-size: 1.5rem;
-          margin-right: 10px;
-          vertical-align: middle;
-        }
-        .price-card:hover {
-          box-shadow:
-            0 0 18px #61dafb, inset 0 0 20px #61dafb;
-          border-color: #61dafb;
-          z-index: 3;
-        }
-        .dual-card {
-          margin: 0 20px 20px 20px;
-          background: #000000;
-          border: 1px solid #444444;
-          border-radius: 8px;
-          padding: 24px 30px;
-          box-shadow:
-            inset 0 0 12px #444444cc;
-          display: flex;
-          gap: 24px;
-          user-select: text;
-          flex-direction: column;
-        }
-        .dual-card-heading {
-          font-weight: 700;
-          font-size: 1.35rem;
-          color: #4ec9f5;
-          margin-bottom: 18px;
-          user-select: text;
-          font-family: 'Fira Code', monospace;
-          border-bottom: 1.5px solid #3b3b5a;
-          padding-bottom: 6px;
-          flex-basis: 100%;
-          display: flex;
-          align-items: center;
-          gap: 12px;
-        }
-        .dual-card:hover {
-          box-shadow:
-            0 0 20px #61dafb, inset 0 0 22px #61dafb;
-          border-color: #61dafb;
-          z-index: 3;
-        }
-        .dual-parts-wrapper {
-          flex-grow: 1;
-          display: flex;
-          gap: 20px;
-          user-select: text;
-        }
-        .dual-part {
-          flex: 1;
-          background: #111111;
-          border-radius: 6px;
-          padding: 18px 20px;
-          box-shadow: inset 0 0 10px #2f72b0;
-          color: #c5cee4;
-          font-family: 'Fira Code', monospace;
-          user-select: text;
-          cursor: default;
-          display: flex;
-          flex-direction: column;
-          transition: box-shadow 0.3s ease;
-          position: relative;
-        }
-        .dual-part .card-item-icon {
-          font-size: 1.3rem;
-          margin-right: 8px;
-          vertical-align: middle;
-        }
-        .dual-part:hover {
-          box-shadow: 0 0 20px #61dafbaa, inset 0 0 14px #61dafbbaa;
+          box-shadow: 0 0 14px #349aff88, inset 0 0 12px #4784edde;
+          transition: box-shadow 0.3s;
           z-index: 2;
         }
-        .price-title {
-          font-weight: 700;
+        .event:hover::before {
+          box-shadow: 0 0 30px #349aff, inset 0 0 18px #4784ed;
+        }
+        .event .title {
           font-size: 1.3rem;
-          margin-bottom: 12px;
-          color: #9cdcfe;
-          text-shadow: 0 0 6px #3799e9aa;
+          font-weight: 700;
+          color: #349aff;
+          margin-bottom: 10px;
           user-select: text;
-          font-family: 'Fira Code', monospace;
+          display: flex;
+          align-items: center;
+          gap: 10px;
+        }
+        .event .description {
+          font-size: 1rem;
+          color: #d1d9e6;
+          line-height: 1.6;
+          user-select: text;
+        }
+        /* Dual events styling [Enhanced & restructured] */
+        .dual-event {
+          background: rgba(26,40,63,0.91);
+          border-radius: 18px;
+          padding: 24px 25px 20px 25px;
+          box-shadow: 0 3px 19px 0 rgba(52,154,255,0.16);
+          margin-top: 18px;
+          color: #f7f9fc;
+          border: 1.5px solid #203459;
+          display: flex;
+          flex-direction: column;
+          gap: 10px; /* space between heading and parts */
+        }
+        .dual-event-title {
+          font-size: 1.22rem;
+          font-weight: 700;
+          color: #60b7ff;
+          margin-bottom: 16px;
+          user-select: text;
+          letter-spacing: 0.5px;
           display: flex;
           align-items: center;
           gap: 8px;
+          text-shadow: 0 0 5px #349aff44;
         }
-        .price-description {
-          font-size: 1rem;
-          line-height: 1.5;
-          color: #d4d4d4cc;
+        .dual-parts-row {
+          display: flex;
+          gap: 24px;
+          width: 100%;
+        }
+        .dual-part {
+          flex: 1;
+          background: linear-gradient(125deg, #212d49 80%, #4784ed11 100%);
+          border-radius: 12px;
+          padding: 15px 21px;
+          box-shadow: 0 0 0.5px #4784ed33, inset 0 0 20px #34547244;
+          cursor: default;
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-start;
+          transition: filter 0.2s, box-shadow 0.2s;
+          border: 1.5px solid #29385088;
+        }
+        .dual-part:not(:last-child) {
+          border-right: 4px solid #4784ed29;
+        }
+        .dual-part:hover {
+          filter: drop-shadow(0 0 24px #349aff88) brightness(1.10);
+        }
+        .dual-part .title {
+          font-size: 1.08rem;
+          font-weight: 650;
+          color: #349aff;
+          margin-bottom: 6px;
+          display: flex;
+          align-items: center;
+          gap: 7px;
+          user-select: text;
+        }
+        .dual-part .description {
+          font-size: 0.97rem;
+          line-height: 1.4;
+          color: #d3dae8;
           user-select: text;
           flex-grow: 1;
-          white-space: pre-wrap;
         }
+        /* Price styling for single and dual parts (if used) */
         .price-amount {
-          margin-top: 14px;
+          margin-top: 10px;
           font-weight: 700;
-          font-family: 'Fira Code', monospace;
+          color: #74c5fa;
           font-size: 1.05rem;
-          color: #b5cea8;
           user-select: text;
-          padding-top: 6px;
-          border-top: 1px solid #3b3b5a;
         }
-        @media (max-width: 800px) {
-          .dual-parts-wrapper {
-            flex-direction: column;
-            gap: 16px;
-          }
+        /* Responsive */
+        @media (max-width: 768px) {
+          .timeline { padding-left: 30px; }
+          .event::before { left: -40px; width: 16px; height: 16px; top: 10px; }
+          .timeline::before { left: -28px; font-size: 32px; top: -16px; }
+          .dual-parts-row { flex-direction: column; gap: 16px; }
         }
-        @media (max-width: 400px) {
-          .price-cards-wrapper {
-            padding: 0 10px;
-          }
-          .price-card, .dual-card {
-            margin: 0 5px 16px;
-            padding: 16px 18px;
-          }
+        @media (max-width: 480px) {
+          .our-price-heading { font-size: 2rem; margin-bottom: 28px; }
+          .dual-event { padding: 11px 10px 13px 10px; }
+          .dual-part { padding: 9px 8px; }
         }
       `}</style>
 
-      <div className="our-price-container" role="main">
+      <div className="our-price-container">
         <h1 className="our-price-heading">
-          <span className="offer-main-icon">💡</span>
-          What We Offer&nbsp;—&nbsp;With Clarity & Value
+          <span className="heading-ico">🧊</span>
+          What We Offer - Modern, Clear, &amp; Valued
         </h1>
-
-        <div className="price-cards-wrapper" role="list">
-          <div className="editor-top-bar" aria-hidden="true">
-            <span className="control-btn close-btn" />
-            <span className="control-btn minimize-btn" />
-            <span className="control-btn zoom-btn" />
-          </div>
-
+        <div className="timeline">
           {pricingData.map((item, index) =>
             item.dual ? (
-              <div className="price-card dual-card" key={index} role="listitem">
-                <div className="dual-card-heading">
-                  <span className="card-item-icon">{item.icon}</span>
-                  {item.dualTitle}
-                </div>
-                <div className="dual-parts-wrapper">
-                  {item.parts.map((part, i) => (
-                    <div className="dual-part" key={i}>
-                      <h3 className="price-title">
-                        <span className="card-item-icon">{part.icon}</span>
-                        {part.title}
-                      </h3>
-                      <p className="price-description">{part.description}</p>
-                      {/* Optionally add price here: <p className="price-amount">{part.price}</p> */}
-                    </div>
-                  ))}
+              <div className="event" key={index}>
+                <div className="dual-event">
+                  <h3 className="dual-event-title">
+                    {iconMap[item.dualTitle] || "💡"} {item.dualTitle}
+                  </h3>
+                  <div className="dual-parts-row">
+                    {item.parts.map((part, i) => (
+                      <div className="dual-part" key={i}>
+                        <div className="title">
+                          <span>{iconMap[part.title] || "🔹"}</span>
+                          {part.title}
+                        </div>
+                        <div className="description">{part.description}</div>
+                        {part.price && (
+                          <div className="price-amount">{part.price}</div>
+                        )}
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </div>
             ) : (
-              <div className="price-card" key={index} role="listitem">
-                <h2 className="price-title">
-                  <span className="card-item-icon">{item.icon}</span>
+              <div className="event" key={index}>
+                <div className="title">
+                  <span>{iconMap[item.title] || "💡"}</span>
                   {item.title}
-                </h2>
-                <p className="price-description">{item.description}</p>
-                {/* Optionally add price here: <p className="price-amount">{item.price}</p> */}
+                </div>
+                <div className="description">{item.description}</div>
+                {item.price && (
+                  <div className="price-amount">{item.price}</div>
+                )}
               </div>
             )
           )}

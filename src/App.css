@@ -228,156 +228,6 @@ section {
 }
 
 
-/* Tech Stack CSS */
-/* Container styling */
-.Techstack-container {
-  background: #000;
-  color: #fff;
-  padding: 80px 20px;
-  text-align: center;
-  overflow: hidden;
-  position: relative;
-  min-height: 100vh;
-  opacity: 0;
-  transform: translateY(50px);
-  transition: opacity 1s ease, transform 1s ease;
-}
-
-.Techstack-container.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.TechStack-heading {
-  font-size: 2.5rem;
-  margin-bottom: 50px;
-  color: #00f0ff;
-  letter-spacing: 2px;
-  position: relative;
-  z-index: 2;
-  text-shadow: 0 0 10px #00f0ff, 0 0 20px #00f0ff;
-}
-
-/* Circle container */
-.tech-scroll-container {
-  position: relative;
-  width: 100%;
-  max-width: 500px;
-  margin: 0 auto;
-  height: 500px;
-  border-radius: 50%;
-  animation: rotateCircle 30s linear infinite;
-}
-
-.tech-card {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform-origin: -200px center;
-  transform: rotate(calc(var(--i) * 32deg)) translateX(200px) rotate(calc(var(--i) * -32deg));
-  text-align: center;
-  transition: transform 0.4s ease, filter 0.4s ease;
-  filter: drop-shadow(0 0 5px rgba(0, 240, 255, 0.3));
-}
-
-.tech-icon {
-  width: 60px;
-  height: 60px;
-  object-fit: contain;
-  border-radius: 50%;
-  background: rgba(0, 240, 255, 0.08);
-  padding: 10px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  position: relative;
-  z-index: 1;
-  box-shadow: 0 0 10px rgba(0, 240, 255, 0.3);
-}
-
-.tech-icon:hover {
-  transform: scale(1.2);
-  box-shadow:
-    0 0 10px #00f0ff,
-    0 0 20px #00f0ff,
-    0 0 30px #00f0ff;
-}
-
-/* Orbiting dots */
-.tech-card::before {
-  content: '';
-  position: absolute;
-  top: -6px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 12px;
-  height: 12px;
-  background-color: #00f0ff;
-  border-radius: 50%;
-  box-shadow:
-    0 0 6px #00f0ff,
-    0 0 10px #00f0ff,
-    0 0 14px #00f0ff;
-  animation: orbit 2s linear infinite;
-}
-
-/* Labels */
-.tech-card span {
-  display: block;
-  margin-top: 10px;
-  font-size: 14px;
-  color: #ccc;
-  text-shadow: 0 0 6px #00f0ff44;
-}
-
-/* Rotation animation */
-@keyframes rotateCircle {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
-/* Orbit effect for small dots */
-@keyframes orbit {
-  0% {
-    transform: translateX(-50%) rotate(0deg) translateY(-30px) rotate(0deg);
-  }
-  100% {
-    transform: translateX(-50%) rotate(360deg) translateY(-30px) rotate(-360deg);
-  }
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  .tech-scroll-container {
-    height: 400px;
-  }
-
-  .tech-icon {
-    width: 45px;
-    height: 45px;
-  }
-
-  .TechStack-heading {
-    font-size: 2rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .tech-scroll-container {
-    height: 350px;
-  }
-
-  .tech-icon {
-    width: 40px;
-    height: 40px;
-  }
-
-  .tech-card span {
-    font-size: 12px;
-  }
-}
 
 /* Footer CSS */
 
@@ -809,13 +659,6 @@ section {
 
 
 
-
-/* Client Review CSS */
-
-
-
-
-
 /* Project Counter CSS */
 
 /* ===== Container ===== */
@@ -928,11 +771,208 @@ section {
 
 
 
+/* Tech Satck CSS */
 
+/* Main card container with gradient and shadow */
+.main-card-container {
+  width: 96vw;
+  max-width: 800px;
+  min-height: 70vh;
+  margin: 48px auto;
+  padding: 0.5rem;
+  background: linear-gradient(135deg, #101626 90%, #1e40af 100%);
+  border-radius: 24px;
+  box-shadow: 0 10px 40px rgba(30, 64, 175, 0.16),
+              0 2px 8px rgba(0,0,0,0.07);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: visible;
+}
 
+/* Rotating tech stack container with glowing animated border */
+.main-techcontainer {
+  position: relative;
+  width: 90vw;
+  max-width: 760px;
+  height: 60vh;
+  max-height: 600px;
+  background-color: #000;
+  border-radius: 18px;
+  padding: 24px 20px 40px;
+  margin: 40px auto;
+  box-sizing: border-box;
+  user-select: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: visible;
+  z-index: 0;
+  border: 2px solid rgba(30, 64, 175, 0.16);
+}
 
+/* Glowing border wrapper with animation */
+.main-techcontainer::before {
+  content: "";
+  position: absolute;
+  top: -4px; /* slightly outside border */
+  left: -4px;
+  width: calc(100% + 8px);
+  height: calc(100% + 8px);
+  border-radius: 22px; /* slightly larger than container radius */
+  pointer-events: none;
+  z-index: 1; /* above background, behind content */
 
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    #3b82f6 25%,
+    #1e40af 50%,
+    #3b82f6 75%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  box-shadow: 0 0 12px 3px rgba(30, 64, 175, 0.85);
 
+  animation: glow-move 4s linear infinite;
+}
 
-/* What We Offer CSS */
+/* Overlay to mask inner edges and create neat border glow */
+.main-techcontainer::after {
+  content: "";
+  position: absolute;
+  top: 2px; 
+  left: 2px;
+  width: calc(100% - 4px);
+  height: calc(100% - 4px);
+  border-radius: 18px;
+  background-color: #000;
+  pointer-events: none;
+  z-index: 1; /* changed from 2 to 1 so content stays above */
+}
 
+/* Keep all direct content inside main-techcontainer above pseudo elements */
+.main-techcontainer > * {
+  position: relative;
+  z-index: 2;
+}
+
+/* Animate the background gradient horizontally to simulate glow moving */
+@keyframes glow-move {
+  0% {
+    background-position: 0% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* Section Heading */
+.TechStack-heading {
+  color: #1e40af;
+  margin-bottom: 1.5rem;
+  font-weight: 700;
+  font-size: 2.2rem;
+  text-align: center;
+}
+
+/* Carousel Container (adjusted for margin inside card) */
+.tech-carousel {
+  border-radius: 12px;
+  position: relative;
+  margin: 0 auto;
+  width: 600px;      /* adjusted width for safe distance from border */
+  height: 420px;     /* adjusted height accordingly */
+  background: transparent;
+}
+
+/* Single Tech Card (smaller so items don’t touch borders) */
+.tech-card {
+  position: absolute;
+  width: 130px;
+  height: 160px;
+  top: calc(30% - 80px);  /* center based on new card height */
+  left: calc(50% - 65px); /* center based on new card width */
+  border-radius: 14px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+  background-color: #fff;
+  text-align: center;
+  padding: 1rem 1rem 1.2rem;
+  user-select: none;
+  cursor: default;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: box-shadow 0.25s ease, transform 0.3s ease;
+}
+
+.tech-card:hover {
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.45);
+}
+
+.tech-icon {
+  width: 85px;
+  height: 85px;
+  margin-bottom: 1rem;
+  object-fit: contain;
+  border-radius: 12px;
+  transition: transform 0.3s ease;
+}
+
+.tech-card:hover .tech-icon {
+  transform: scale(1.1);
+}
+
+.tech-name {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #1e40af;
+  user-select: none;
+}
+
+/* Responsive adjustments */
+@media (max-width: 900px) {
+  .main-card-container {
+    max-width: 99vw;
+    padding: 0.1rem;
+  }
+  .main-techcontainer {
+    max-width: 98vw;
+    padding: 12px 4px 16px;
+    height: 62vw;
+    min-height: 400px;
+  }
+  .tech-carousel {
+    width: 95vw;
+    max-width: 440px;
+    height: 58vw;
+    min-height: 320px;
+  }
+}
+
+@media (max-width: 600px) {
+  .main-techcontainer {
+    height: auto;
+    min-height: 300px;
+    padding-bottom: 16px;
+  }
+  .tech-carousel {
+    width: 98vw;
+    max-width: 300px;
+    height: 230px;
+  }
+  .tech-card {
+    width: 85px;
+    height: 98px;
+    top: calc(40% - 49px);
+    left: calc(50% - 42.5px);
+  }
+  .tech-icon {
+    width: 44px;
+    height: 44px;
+  }
+  .TechStack-heading {
+    font-size: 1.15rem;
+  }
+}

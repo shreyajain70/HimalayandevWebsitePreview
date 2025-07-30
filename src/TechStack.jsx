@@ -12,12 +12,13 @@ const techStackData = [
   { name: "BootStrap", logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSYblUcIW4H3tPxRrLVOCKstsEWPUveoaPk1w&s" },
   { name: "Figma", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" },
   { name: "Git", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" },
-  ,
 ];
 
 const TechStack = () => {
   const sectionRef = useRef(null);
+  const carouselRef = useRef(null);
   const [visible, setVisible] = useState(false);
+  const [rotationY, setRotationY] = useState(0);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -32,19 +33,54 @@ const TechStack = () => {
     };
   }, []);
 
+  useEffect(() => {
+    if (!visible) return;
+    const intervalId = setInterval(() => {
+      setRotationY((prev) => prev + 0.4);
+    }, 30);
+    return () => clearInterval(intervalId);
+  }, [visible]);
+
+  const numItems = techStackData.length;
+  const radius = 350;
+
   return (
-    <div
-      ref={sectionRef}
-      className={`Techstack-container ${visible ? "visible" : ""}`}
-    >
-      <h2 className="TechStack-heading">Tech Stack</h2>
-      <div className="tech-scroll-container">
-        {techStackData.map((tech, i) => (
-          <div className="tech-card" key={tech.name} style={{ "--i": i }}>
-            <img src={tech.logo} alt={tech.name} className="tech-icon" />
-            <span>{tech.name}</span>
+    <div className="main-card-container">
+      <div className="main-techcontainer">
+        <div
+          ref={sectionRef}
+          className={`Techstack-container${visible ? " visible" : ""}`}
+          style={{ perspective: "1200px", height: "500px" }}
+        >
+          <h2 className="TechStack-heading">Tech Stack</h2>
+          <div
+            ref={carouselRef}
+            className="tech-carousel"
+            style={{
+              position: "relative",
+              width: "700px",
+              height: "500px",
+              transformStyle: "preserve-3d",
+              transform: `translateZ(-${radius}px) rotateY(${rotationY}deg)`,
+              transition: "transform 0.1s linear",
+              margin: "auto",
+            }}
+          >
+            {techStackData.map((tech, i) => {
+              const angle = (360 / numItems) * i;
+              const transform = `
+                rotateY(${angle}deg)
+                translateZ(${radius}px)
+              `;
+              return (
+                <div key={tech.name} className="tech-card" style={{ transform }}>
+                  <img src={tech.logo} alt={tech.name} className="tech-icon" />
+                  <span className="tech-name">{tech.name}</span>
+                </div>
+              );
+            })}
           </div>
-        ))}
+        </div>
       </div>
     </div>
   );
