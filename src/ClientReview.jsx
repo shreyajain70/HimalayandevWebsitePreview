@@ -63,6 +63,12 @@ export const ClientReview = () => {
         "We are fully satisfied with the development work delivered by your team. The quality, attention to detail, and timely execution. It was a great experience collaborating with such a professional team.",
       imgSrc: "/TheMobileZoneImage.jpg",
     },
+    {
+      name: "Ishan Library ",
+      feedback:
+        "We are truly impressed with the work delivered by your development team. The digital solutions you provided have helped us manage our library operations more efficiently and present our services professionally online. The design is clean, user-friendly, and perfectly aligned with our needs. Thank you for your dedication and excellent support throughout the process.",
+      imgSrc: "/LibraryClientImage.jpg",
+    },
   ];
 
   return (
