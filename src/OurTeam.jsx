@@ -13,7 +13,7 @@ export const OurTeam = () => {
         </div>
         <div className="team-card">
           <img src="/ShreyaImage.jpg" alt="Shreya Jain"/>
-          <h2>Shreya Jain</h2>
+          <h2>Shreya</h2>
           <h3>Co-Founder, Figma Designer, Full Stack Developer</h3>
           <p>Shreya is an expert MERN stack developer and Figma designer, skilled in building user-focused Web Developer. She leads both UI/UX design and full-stack development, combining creativity with technical excellence to deliver seamless, scalable digital solutions. Known for her collaborative approach, attention to detail, and strong problem-solving skills.</p>
         </div>
@@ -37,13 +37,13 @@ export const OurTeam = () => {
         </div>
         <div className="team-card">
           <img src="/KashishImage.jpg" alt="Kashish Jain"/>
-          <h2>Kashish Jain</h2>
+          <h2>Kashish</h2>
           <h3>Digital Marketing Manager</h3>
           <p>Kashish is a skilled Digital Marketing Manager specializing in planning, executing, and optimizing digital marketing campaigns across channels such as SEO, SEM, social media, email marketing, and content marketing. She leverages data analysis and current marketing trends to enhance brand awareness, drive website traffic, and generate leads. Kashish combines creativity with strong strategic thinking and communication skills to lead campaigns that improve customer acquisition and retention. Known for her analytical mindset and teamwork, Kashish drives innovative, measurable marketing solutions aligned with business goals.</p>
         </div>
         <div className="team-card">
           <img src="/Shruti-Image.jpg" alt="Shruti Pathania"/>
-          <h2>Shruti Pathania</h2>
+          <h2>Shruti</h2>
           <h3>Social Media Manager</h3>
           <p>Shruti is a skilled Social Media Manager responsible for developing and executing creative social media strategies to enhance brand presence and engage target audiences across platforms like Instagram, Facebook, Twitter, and LinkedIn. She excels in content creation, community management, influencer collaboration, and data-driven campaign optimization. With strong communication, creativity, and analytical skills, Shruti effectively monitors trends, analyzes performance metrics, and adapts strategies to maximize reach and engagement.</p>
         </div>
