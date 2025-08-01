@@ -13,7 +13,7 @@ function HeroSection() {
         muted
         playsInline
         // src={heroVideo} // Use this if importing local video
-        src="MainVideo.mp4" // Replace with your video path or url
+        src="/MainVideo.mp4" // Replace with your video path or url
         className="absolute inset-0 w-full h-full object-cover z-0"
       />
       {/* Overlay grid on video */}

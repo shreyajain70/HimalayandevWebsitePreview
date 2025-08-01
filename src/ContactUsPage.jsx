@@ -1,5 +1,5 @@
-    import React, { useState } from "react";
-
+import React, { useState } from "react";
+import axios from "axios";
 
 const Note = () => (
   <div className="Note-container">
@@ -16,11 +16,10 @@ const Note = () => (
 
     <div className="Note-contact-info">
       <p>
-        📞 <strong>Phone:</strong>{" "}
-        <span className="Note-contact-number">7591035124</span>
+        📞 <strong>Phone:</strong> <span className="Note-contact-number">7591035124</span>
       </p>
       <p>
-        📧 <strong>Email:</strong>{" "}
+        📧 <strong>EmailId:</strong>{" "}
         <a
           href="mailto:thehimalayandevs712@gmail.com"
           className="Note-contact-link"
@@ -47,37 +46,56 @@ const Note = () => (
 
 export const ContactUsPage = ({ onBack }) => {
   const [showNote, setShowNote] = useState(false);
-  const [phoneNumber, setPhoneNumber] = useState("");
-  const [email, setEmail] = useState("");
   const [phoneError, setPhoneError] = useState("");
   const [emailWarning, setEmailWarning] = useState("");
 
-  const handlePhoneChange = (e) => {
-    const val = e.target.value;
-    if (/^\d{0,10}$/.test(val)) {
-      setPhoneNumber(val);
-      if (phoneError) setPhoneError("");
-    }
+  const [FirstName, setFirstName] = useState("");
+  const [LastName, setLastName] = useState("");
+  const [PhoneNumber, setPhoneNumber] = useState("");
+  const [EmailId, setEmailId] = useState("");
+
+  // Clear errors/warnings on input change
+  const handleInputChange = (setter, errorSetter) => (e) => {
+    setter(e.target.value);
+    if (errorSetter) errorSetter("");
   };
 
-  const handleEmailChange = (e) => {
-    setEmail(e.target.value);
-    if (emailWarning) setEmailWarning("");
+  const SubmitData = async () => {
+    try {
+      // Use POST instead of GET to send data in body
+      const response = await axios.post(
+        "http://127.0.0.1:7777/user",
+        {
+          FirstName,
+          LastName,
+          PhoneNumber,
+          EmailId,
+        },
+        {
+          withCredentials: true,
+        }
+      );
+      console.log("Submitted Data:", response.data);
+    } catch (err) {
+      console.error("Error Submitting:", err);
+    }
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (phoneNumber.length !== 10) {
+    if (PhoneNumber.length !== 10 || !/^\d{10}$/.test(PhoneNumber)) {
       setPhoneError("Phone number must be exactly 10 digits.");
       return;
     }
 
-    if (!email.toLowerCase().includes("@gmail.com")) {
+    if (!EmailId.toLowerCase().endsWith("@gmail.com")) {
       setEmailWarning("Please use a valid Gmail address ending with @gmail.com.");
       return;
     }
 
+    // If validation passes, submit form and show thank you note
+    SubmitData();
     setShowNote(true);
   };
 
@@ -87,59 +105,60 @@ export const ContactUsPage = ({ onBack }) => {
         <>
           <h1 className="ContactUs-Heading">Contact Us</h1>
           <form className="ContactUs-Form" onSubmit={handleSubmit} noValidate>
-            <label className="ContactUs-Label" htmlFor="firstName">
+            <label className="ContactUs-Label" htmlFor="FirstName">
               FirstName :
             </label>
             <input
               className="ContactUs-Input"
-              id="firstName"
-              name="firstName"
+              id="FirstName"
+              name="FirstName"
               type="text"
+              value={FirstName}
               required
+              onChange={handleInputChange(setFirstName)}
             />
 
-            <label className="ContactUs-Label" htmlFor="lastName">
+            <label className="ContactUs-Label" htmlFor="LastName">
               LastName :
             </label>
             <input
               className="ContactUs-Input"
-              id="lastName"
-              name="lastName"
+              id="LastName"
+              name="LastName"
               type="text"
+              value={LastName}
               required
+              onChange={handleInputChange(setLastName)}
             />
 
-            <label className="ContactUs-Label" htmlFor="phoneNumber">
+            <label className="ContactUs-Label" htmlFor="PhoneNumber">
               Phone Number :
             </label>
             <input
               className="ContactUs-Input"
-              id="phoneNumber"
-              name="phoneNumber"
+              id="PhoneNumber"
+              name="PhoneNumber"
               type="text"
-              value={phoneNumber}
-              onChange={handlePhoneChange}
+              value={PhoneNumber}
+              maxLength={10}
               required
+              onChange={handleInputChange(setPhoneNumber, setPhoneError)}
             />
-            {phoneError && (
-              <div className="ContactUs-ErrorMessage">{phoneError}</div>
-            )}
+            {phoneError && <div className="ContactUs-ErrorMessage">{phoneError}</div>}
 
-            <label className="ContactUs-Label" htmlFor="email">
-              Email :
+            <label className="ContactUs-Label" htmlFor="EmailId">
+              EmailId :
             </label>
             <input
               className="ContactUs-Input"
-              id="email"
-              name="email"
+              id="EmailId"
+              name="EmailId"
               type="email"
-              value={email}
-              onChange={handleEmailChange}
+              value={EmailId}
               required
+              onChange={handleInputChange(setEmailId, setEmailWarning)}
             />
-            {emailWarning && (
-              <div className="ContactUs-WarningMessage">{emailWarning}</div>
-            )}
+            {emailWarning && <div className="ContactUs-WarningMessage">{emailWarning}</div>}
 
             <button className="ContactUs-SubmitButton" type="submit">
               Submit
@@ -148,11 +167,10 @@ export const ContactUsPage = ({ onBack }) => {
 
           <div className="ContactUs-ContactInfo" style={{ marginTop: "1rem" }}>
             <p>
-              📞 Contact Us:{" "}
-              <span className="Note-contact-number">7591035124</span>
+              📞 Contact Us: <span className="Note-contact-number">7591035124</span>
             </p>
             <p>
-              📧 Email:{" "}
+              📧 EmailId:{" "}
               <a
                 href="mailto:thehimalayandevs712@gmail.com"
                 className="Note-contact-link"

@@ -1135,3 +1135,96 @@ section {
     transform: translateY(0);
   }
 }
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  /* Make the main container padding smaller */
+  .ContactUs-MainPage {
+    padding: 1rem;
+  }
+
+  /* Scale down the heading font size */
+  .ContactUs-Heading {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+  }
+
+  /* Shrink form padding and width */
+  .ContactUs-Form {
+    padding: 1.5rem 2rem;
+    max-width: 100%;
+    box-shadow: 0 0 10px rgba(42, 143, 255, 0.5);
+  }
+
+  /* Reduce label font size */
+  .ContactUs-Label {
+    font-size: 0.9rem;
+  }
+
+  /* Input adjustments */
+  .ContactUs-Input {
+    font-size: 0.9rem;
+    padding: 0.5rem 0.8rem;
+  }
+
+  /* Submit button font size and padding */
+  .ContactUs-SubmitButton {
+    font-size: 1rem;
+    padding: 0.6rem;
+  }
+
+  /* Contact info font size */
+  .ContactUs-ContactInfo {
+    font-size: 0.9rem;
+    max-width: 100%;
+  }
+
+  /* Note container adapted for small screens */
+  .Note-container {
+    max-width: 90vw;
+    height: auto;
+    padding: 1.5rem 1.5rem;
+    margin: 1.5rem auto;
+  }
+
+  /* Note image smaller */
+  .Note-image {
+    width: 90px;
+    height: 90px;
+    margin-bottom: 1rem;
+  }
+
+  /* Note heading smaller */
+  .Note-heading {
+    font-size: 1.6rem;
+    margin-bottom: 0.8rem;
+  }
+
+  /* Note message smaller */
+  .Note-message {
+    font-size: 1rem;
+    margin-bottom: 0.8rem;
+  }
+
+  /* Back button font size smaller */
+  .ContactUs-BackButton {
+    font-size: 0.9rem;
+    margin-top: 0.8rem;
+  }
+}
+
+@media (max-width: 400px) {
+  /* Further reduce padding for tiny screens */
+  .ContactUs-MainPage {
+    padding: 0.5rem;
+  }
+
+  /* Shrink inputs and button further */
+  .ContactUs-Input {
+    padding: 0.4rem 0.6rem;
+  }
+
+  .ContactUs-SubmitButton {
+    font-size: 0.9rem;
+    padding: 0.5rem;
+  }
+}
