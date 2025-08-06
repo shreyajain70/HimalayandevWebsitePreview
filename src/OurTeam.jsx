@@ -18,12 +18,6 @@ export const OurTeam = () => {
           <p>Shreya is an expert MERN stack developer and Figma designer, skilled in building user-focused Web Developer. She leads both UI/UX design and full-stack development, combining creativity with technical excellence to deliver seamless, scalable digital solutions. Known for her collaborative approach, attention to detail, and strong problem-solving skills.</p>
         </div>
         <div className="team-card">
-          <img src="/HarshImage.jpg" alt="Harsh Dhiman"/>
-          <h2>Harsh Dhiman</h2>
-          <h3>Co-Founder, Full Stack Developer</h3>
-          <p>Harsh is a proficient MERN stack developer with expertise in building scalable Web Developer. As a co-founder, he leads end-to-end development, from creating responsive front-end interfaces in React to designing robust APIs. Known for his problem-solving skills, clean code, and collaborative approach, Harsh is dedicated to delivering high-quality, user-focused digital solutions.</p>
-        </div>
-        <div className="team-card">
           <img src="/AbhishekImage.jpg" alt="Abhishek Sharma"/>
           <h2>Abhishek Sharma</h2>
           <h3>Human Resources</h3>
